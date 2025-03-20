@@ -1,10 +1,21 @@
 # Core dependencies
-requests>=2.28.1
-beautifulsoup4>=4.11.1
-sqlalchemy>=2.0.0
-fastapi>=0.95.0
-uvicorn>=0.21.0
-pydantic>=1.10.7
+flask>=2.2.3
+requests>=2.28.2
+beautifulsoup4>=4.11.2
+tensorflow>=2.11.0
+scikit-learn>=1.2.2
+numpy>=1.24.2
+pandas>=1.5.3
+sqlalchemy>=2.0.5
+python-dotenv>=1.0.0
+gunicorn>=20.1.0
+pytest>=7.2.2
+coverage>=7.2.1
+lxml>=4.9.2
+html2text>=2020.1.16
+Jinja2>=3.1.2
+urllib3>=1.26.15
+pyyaml>=6.0
 
 # AI and ML dependencies
 scikit-learn>=1.2.2
@@ -12,13 +23,11 @@ tensorflow>=2.12.0
 nltk>=3.8.1
 
 # Web scanning and testing
-owasp-zap-api-python>=0.4.0
 python-nmap>=0.7.1
 selenium>=4.8.3
 webdriver-manager>=3.8.6
 
 # Utilities
-python-dotenv>=1.0.0
 pytest>=7.3.1
 black>=23.3.0
 flake8>=6.0.0 

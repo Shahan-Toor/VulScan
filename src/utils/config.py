@@ -10,28 +10,48 @@ from typing import Dict, Any, Optional
 logger = logging.getLogger(__name__)
 
 DEFAULT_CONFIG = {
-    "scanner": {
-        "threads": 5,
-        "timeout": 10,
-        "user_agent": "AI-VulScan/1.0",
-        "max_requests_per_second": 10
+    "zap_path": None,
+    "zap_port": 8080,
+    "zap_api_key": None,
+    "zap_api_url": "http://localhost:8080",
+    "max_depth": 3,
+    "threads": 4,
+    "timeout": 30,
+    "user_agent": "VulnerabilityScannerBot/1.0",
+    "enable_ai_analysis": True,
+    "report_path": "reports",
+    "excluded_paths": [
+        "logout",
+        ".jpg",
+        ".png",
+        ".gif",
+        ".css",
+        ".js"
+    ],
+    "scan_policy": "Default Policy",
+    "auth": {
+        "enabled": False,
+        "login_url": "",
+        "username": "",
+        "password": "",
+        "login_regex": ""
     },
-    "crawler": {
-        "max_depth": 3,
-        "max_pages": 100,
-        "follow_redirects": True,
-        "respect_robots_txt": True
+    "context": {
+        "name": "default",
+        "include_urls": [],
+        "exclude_urls": []
     },
-    "checks": {
-        "sql_injection": True,
-        "xss": True,
-        "csrf": True,
-        "idor": True
+    "spider_options": {
+        "max_children": 0,
+        "subtree_only": False,
+        "scope_constraint": False,
+        "thread_count": 5,
+        "max_depth": 5,
+        "max_duration": 0
     },
-    "reporting": {
-        "include_evidence": True,
-        "include_recommendations": True,
-        "min_severity": "low"
+    "scan_options": {
+        "passive_scan_only": False,
+        "recursive": True
     },
     "ai": {
         "use_ml_prioritization": True,
