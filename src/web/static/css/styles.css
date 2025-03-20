@@ -1,0 +1,135 @@
+/* Main styles for the Vulnerability Scanner Web Interface */
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+.navbar-brand {
+  font-weight: 600;
+}
+
+.chart-container {
+  position: relative;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.dashboard-card {
+  transition: transform 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.severity-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.severity-critical {
+  background-color: #dc3545;
+  color: white;
+}
+
+.severity-high {
+  background-color: #fd7e14;
+  color: white;
+}
+
+.severity-medium {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.severity-low {
+  background-color: #0dcaf0;
+  color: #333;
+}
+
+.severity-info {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Scan status page */
+.progress {
+  height: 25px;
+}
+
+.scan-status-card {
+  border-left: 5px solid #0d6efd;
+}
+
+.scan-error-card {
+  border-left: 5px solid #dc3545;
+}
+
+/* Vulnerability details */
+.vuln-details-card {
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.vuln-details-card .card-header {
+  padding: 15px;
+  font-weight: 600;
+}
+
+.evidence-code {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Form styles */
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.btn-scan {
+  padding: 10px 25px;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chart-container {
+    height: 200px;
+  }
+
+  .nav-item .btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* Animation for loading states */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loading {
+  animation: pulse 1.5s infinite ease-in-out;
+}

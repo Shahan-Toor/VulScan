@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Vulnerability Scan</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="/"
+          >AI-Enhanced Web Vulnerability Scanner</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/scans">Scan History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/vulnerabilities">Vulnerabilities</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active btn btn-primary text-white"
+                href="/new_scan"
+                >New Scan</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h2>New Vulnerability Scan</h2>
+            </div>
+            <div class="card-body">
+              {% if error %}
+              <div class="alert alert-danger" role="alert">{{ error }}</div>
+              {% endif %}
+
+              <form method="POST" action="/new_scan">
+                <div class="mb-3">
+                  <label for="target_url" class="form-label">Target URL</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="target_url"
+                    name="target_url"
+                    placeholder="https://example.com"
+                    required
+                  />
+                  <div class="form-text">
+                    Enter the full URL including http:// or https://
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label for="scan_depth" class="form-label"
+                      >Crawl Depth</label
+                    >
+                    <select
+                      class="form-select"
+                      id="scan_depth"
+                      name="scan_depth"
+                    >
+                      <option value="1">1 - Homepage only</option>
+                      <option value="2" selected>
+                        2 - Homepage + linked pages
+                      </option>
+                      <option value="3">3 - Deep scan</option>
+                      <option value="4">4 - Very deep scan</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="scan_threads" class="form-label">Threads</label>
+                    <select
+                      class="form-select"
+                      id="scan_threads"
+                      name="scan_threads"
+                    >
+                      <option value="1">1 - Slow/Stealthy</option>
+                      <option value="2">2 - Normal</option>
+                      <option value="4" selected>4 - Fast</option>
+                      <option value="8">8 - Very fast</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="scan_timeout" class="form-label"
+                      >Timeout (seconds)</label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="scan_timeout"
+                      name="scan_timeout"
+                      value="30"
+                      min="5"
+                      max="120"
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <div class="form-check form-switch">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="enable_ai"
+                      name="enable_ai"
+                      checked
+                    />
+                    <label class="form-check-label" for="enable_ai"
+                      >Enable AI Analysis</label
+                    >
+                  </div>
+                  <div class="form-text">
+                    AI analysis improves vulnerability detection and reduces
+                    false positives
+                  </div>
+                </div>
+
+                <div class="accordion mb-3" id="scanOptionsAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="advancedOptionsHeading">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#advancedOptions"
+                      >
+                        Advanced Options
+                      </button>
+                    </h2>
+                    <div
+                      id="advancedOptions"
+                      class="accordion-collapse collapse"
+                      aria-labelledby="advancedOptionsHeading"
+                      data-bs-parent="#scanOptionsAccordion"
+                    >
+                      <div class="accordion-body">
+                        <div class="mb-3">
+                          <label for="user_agent" class="form-label"
+                            >User Agent</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="user_agent"
+                            name="user_agent"
+                            value="VulnerabilityScannerBot/1.0"
+                          />
+                        </div>
+
+                        <div class="mb-3">
+                          <label class="form-label">Vulnerability Tests</label>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="test_sql"
+                              name="test_sql"
+                              checked
+                            />
+                            <label class="form-check-label" for="test_sql"
+                              >SQL Injection</label
+                            >
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="test_xss"
+                              name="test_xss"
+                              checked
+                            />
+                            <label class="form-check-label" for="test_xss"
+                              >Cross-Site Scripting (XSS)</label
+                            >
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="test_csrf"
+                              name="test_csrf"
+                              checked
+                            />
+                            <label class="form-check-label" for="test_csrf"
+                              >Cross-Site Request Forgery (CSRF)</label
+                            >
+                          </div>
+                          <div class="form-check">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="test_idor"
+                              name="test_idor"
+                              checked
+                            />
+                            <label class="form-check-label" for="test_idor"
+                              >Insecure Direct Object References (IDOR)</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="alert alert-warning" role="alert">
+                  <strong>Important:</strong> Only scan websites you have
+                  permission to test. Unauthorized scanning may be illegal.
+                </div>
+
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-primary btn-lg btn-scan">
+                    Start Scan
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-light py-3 mt-5">
+      <div class="container text-center">
+        <p>AI-Enhanced Web Vulnerability Scanner &copy; 2023</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
