@@ -340,6 +340,9 @@ def train_risk_score_model(X: np.ndarray, y: np.ndarray) -> tf.keras.Model:
         metrics=["mean_absolute_error"]
     )
     
+    X_train = np.array(X_train, dtype=np.float32)
+    y_train = np.array(y_train, dtype=np.float32)
+
     # Train model
     history = model.fit(
         X_train, 
@@ -378,7 +381,7 @@ def save_models(vectorizer: TfidfVectorizer, fp_classifier: RandomForestClassifi
         pickle.dump(fp_classifier, f)
     
     # Save risk score model
-    risk_model_path = os.path.join(MODEL_DIR, "risk_scorer")
+    risk_model_path = os.path.join(MODEL_DIR, "risk_scorer.keras")
     risk_model.save(risk_model_path)
     
     logger.info("All models saved successfully")
@@ -397,6 +400,9 @@ def main():
     
     # Train risk score model
     X_risk, y_risk = prepare_risk_score_data(vulnerabilities_df)
+
+    X_risk = np.array(X_risk, dtype=np.float32)
+    y_risk = np.array(y_risk, dtype=np.float32)
     risk_model = train_risk_score_model(X_risk, y_risk)
     
     # Save models

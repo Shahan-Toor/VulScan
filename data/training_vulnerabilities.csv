@@ -1,0 +1,1001 @@
+id,type,url,method,param,payload,evidence,severity,risk_score,risk_level,is_false_positive
+1,csrf,https://webapp.com/settings,POST,,,No CSRF token found in form submission,medium,4.7,medium,False
+2,csrf,https://securitytesting.io/product,POST,,,No CSRF token found in form submission,medium,4.4,medium,False
+3,csrf,https://testsite.org/cart,DELETE,,,No CSRF token found in form submission,high,6.5,high,False
+4,xss,https://vulnerableapp.net/login,PUT,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,6.3,high,True
+5,csrf,https://testsite.org/search,GET,,,No CSRF token found in form submission,medium,4.8,medium,False
+6,command_injection,https://testsite.org/cart,DELETE,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,1.4,info,False
+7,sql_injection,https://testsite.org/user,GET,category_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',high,6.2,high,False
+8,file_inclusion,https://testsite.org/profile,DELETE,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.5,high,False
+9,file_inclusion,https://testsite.org/login,GET,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,6.0,high,False
+10,xss,https://securitytesting.io/admin,DELETE,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,3.4,low,False
+11,idor,https://testsite.org/register,POST,doc_id,660,Unauthorized access to resource doc_id=660,high,6.2,high,False
+12,command_injection,https://vulnerableapp.net/search,POST,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.4,medium,False
+13,csrf,https://vulnerableapp.net/checkout,POST,,,No CSRF token found in form submission,medium,5.3,medium,False
+14,xss,https://webapp.com/cart,DELETE,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,7.5,high,False
+15,file_inclusion,https://example.com/admin,GET,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,6.5,high,False
+16,xss,https://testsite.org/product,POST,message,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,6.2,high,True
+17,file_inclusion,https://vulnerableapp.net/login,GET,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.7,medium,False
+18,csrf,https://vulnerableapp.net/api/users,DELETE,,,No CSRF token found in form submission,low,1.9,info,False
+19,csrf,https://testsite.org/search,GET,,,No CSRF token found in form submission,low,2.4,low,True
+20,idor,https://securitytesting.io/register,POST,account_id,313,Unauthorized access to resource account_id=313,high,7.0,high,False
+21,sql_injection,https://securitytesting.io/settings,PUT,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',low,4.0,medium,False
+22,command_injection,https://vulnerableapp.net/profile,GET,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.2,medium,True
+23,idor,https://example.com/settings,DELETE,user_id,162,Unauthorized access to resource user_id=162,medium,4.6,medium,True
+24,xss,https://example.com/profile,PUT,search,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,2.5,low,False
+25,file_inclusion,https://webapp.com/product,GET,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,4.6,medium,True
+26,csrf,https://example.com/user,DELETE,,,No CSRF token found in form submission,high,5.7,medium,False
+27,csrf,https://testsite.org/login,DELETE,,,No CSRF token found in form submission,medium,6.2,high,True
+28,sql_injection,https://vulnerableapp.net/login,GET,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',info,2.3,low,False
+29,file_inclusion,https://webapp.com/settings,GET,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,3.7,low,False
+30,csrf,https://testsite.org/settings,PUT,,,No CSRF token found in form submission,critical,9.0,critical,False
+31,sql_injection,https://vulnerableapp.net/login,POST,category_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,6.7,high,False
+32,sql_injection,https://example.com/api/users,PUT,order_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,6.6,high,False
+33,xss,https://webapp.com/product,DELETE,search,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,4.1,medium,False
+34,idor,https://vulnerableapp.net/login,GET,user_id,694,Unauthorized access to resource user_id=694,medium,4.9,medium,True
+35,sql_injection,https://example.com/checkout,DELETE,user_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",critical,10.0,critical,False
+36,xss,https://example.com/user,PUT,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,7.9,high,False
+37,sql_injection,https://webapp.com/profile,DELETE,product_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",low,3.1,low,False
+38,idor,https://example.com/register,POST,file_id,49,Unauthorized access to resource file_id=49,info,0.1,info,True
+39,command_injection,https://webapp.com/register,PUT,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,8.1,critical,False
+40,xss,https://example.com/api/products,PUT,message,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,4.6,medium,False
+41,sql_injection,https://example.com/cart,GET,category_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",low,3.2,low,True
+42,idor,https://testsite.org/user,GET,user_id,441,Unauthorized access to resource user_id=441,high,5.7,medium,False
+43,xss,https://testsite.org/cart,DELETE,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,critical,7.7,high,False
+44,file_inclusion,https://vulnerableapp.net/register,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,0.4,info,False
+45,file_inclusion,https://securitytesting.io/login,GET,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,3.9,low,False
+46,csrf,https://vulnerableapp.net/profile,PUT,,,No CSRF token found in form submission,low,3.7,low,False
+47,xss,https://testsite.org/product,POST,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,6.3,high,True
+48,command_injection,https://securitytesting.io/search,GET,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,info,0.9,info,True
+49,file_inclusion,https://example.com/api/products,DELETE,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,6.5,high,False
+50,idor,https://securitytesting.io/settings,POST,account_id,624,Unauthorized access to resource account_id=624,info,0.6,info,True
+51,xss,https://testsite.org/profile,DELETE,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,4.9,medium,False
+52,xss,https://example.com/profile,DELETE,message,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,5.1,medium,False
+53,idor,https://testsite.org/profile,PUT,account_id,204,Unauthorized access to resource account_id=204,low,2.1,low,False
+54,xss,https://vulnerableapp.net/search,POST,search,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,7.3,high,True
+55,sql_injection,https://example.com/cart,GET,user_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',info,0.2,info,False
+56,sql_injection,https://securitytesting.io/register,GET,user_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',critical,8.4,critical,False
+57,sql_injection,https://securitytesting.io/register,PUT,user_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,5.8,medium,False
+58,csrf,https://example.com/login,GET,,,No CSRF token found in form submission,critical,9.4,critical,True
+59,sql_injection,https://example.com/api/products,DELETE,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,6.9,high,False
+60,command_injection,https://testsite.org/settings,GET,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.9,medium,False
+61,sql_injection,https://webapp.com/register,DELETE,order_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',high,6.2,high,False
+62,idor,https://testsite.org/cart,GET,user_id,707,Unauthorized access to resource user_id=707,medium,5.8,medium,False
+63,command_injection,https://securitytesting.io/register,GET,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.3,medium,False
+64,csrf,https://example.com/api/users,PUT,,,No CSRF token found in form submission,medium,3.6,low,False
+65,idor,https://example.com/settings,PUT,user_id,362,Unauthorized access to resource user_id=362,info,0.2,info,False
+66,idor,https://webapp.com/api/products,POST,user_id,142,Unauthorized access to resource user_id=142,low,3.5,low,False
+67,xss,https://example.com/login,GET,message,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,4.0,medium,False
+68,command_injection,https://webapp.com/admin,DELETE,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,2.0,low,True
+69,sql_injection,https://securitytesting.io/register,DELETE,user_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,5.7,medium,False
+70,command_injection,https://webapp.com/settings,GET,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,2.9,low,False
+71,file_inclusion,https://securitytesting.io/settings,DELETE,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,6.2,high,False
+72,idor,https://securitytesting.io/register,POST,account_id,118,Unauthorized access to resource account_id=118,medium,3.6,low,False
+73,command_injection,https://testsite.org/api/products,PUT,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.8,low,False
+74,file_inclusion,https://webapp.com/login,PUT,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.3,low,False
+75,idor,https://testsite.org/register,DELETE,file_id,487,Unauthorized access to resource file_id=487,high,7.1,high,False
+76,csrf,https://example.com/cart,POST,,,No CSRF token found in form submission,medium,6.1,high,False
+77,idor,https://webapp.com/user,GET,doc_id,383,Unauthorized access to resource doc_id=383,high,7.7,high,True
+78,file_inclusion,https://testsite.org/checkout,POST,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,8.4,critical,False
+79,command_injection,https://webapp.com/api/users,GET,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.2,low,False
+80,command_injection,https://securitytesting.io/register,DELETE,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.1,medium,True
+81,csrf,https://example.com/checkout,POST,,,No CSRF token found in form submission,medium,5.2,medium,False
+82,xss,https://securitytesting.io/login,GET,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,5.3,medium,True
+83,csrf,https://webapp.com/search,GET,,,No CSRF token found in form submission,medium,6.1,high,False
+84,csrf,https://webapp.com/api/users,GET,,,No CSRF token found in form submission,medium,6.5,high,False
+85,idor,https://securitytesting.io/admin,POST,doc_id,168,Unauthorized access to resource doc_id=168,medium,5.9,medium,False
+86,idor,https://securitytesting.io/login,GET,user_id,313,Unauthorized access to resource user_id=313,high,7.6,high,False
+87,xss,https://testsite.org/settings,POST,q,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,5.4,medium,False
+88,csrf,https://vulnerableapp.net/api/users,POST,,,No CSRF token found in form submission,medium,6.1,high,False
+89,idor,https://testsite.org/profile,DELETE,doc_id,652,Unauthorized access to resource doc_id=652,high,8.8,critical,False
+90,csrf,https://testsite.org/checkout,GET,,,No CSRF token found in form submission,medium,6.0,high,False
+91,command_injection,https://webapp.com/admin,POST,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,critical,10.0,critical,False
+92,sql_injection,https://example.com/register,PUT,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',info,0.7,info,True
+93,csrf,https://testsite.org/register,POST,,,No CSRF token found in form submission,low,3.3,low,False
+94,file_inclusion,https://webapp.com/checkout,GET,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,4.7,medium,False
+95,idor,https://webapp.com/user,GET,user_id,680,Unauthorized access to resource user_id=680,medium,5.2,medium,False
+96,csrf,https://securitytesting.io/login,POST,,,No CSRF token found in form submission,low,4.2,medium,False
+97,xss,https://vulnerableapp.net/admin,DELETE,search,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,5.3,medium,False
+98,idor,https://securitytesting.io/settings,POST,doc_id,8,Unauthorized access to resource doc_id=8,medium,4.7,medium,False
+99,file_inclusion,https://vulnerableapp.net/cart,GET,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.8,medium,True
+100,file_inclusion,https://webapp.com/register,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,5.4,medium,False
+101,file_inclusion,https://testsite.org/profile,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,9.1,critical,False
+102,sql_injection,https://testsite.org/user,GET,category_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.4,medium,False
+103,sql_injection,https://securitytesting.io/user,POST,category_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,4.5,medium,False
+104,xss,https://securitytesting.io/checkout,PUT,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,info,1.8,info,True
+105,sql_injection,https://testsite.org/checkout,GET,id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',low,3.9,low,False
+106,idor,https://securitytesting.io/cart,PUT,doc_id,528,Unauthorized access to resource doc_id=528,critical,8.1,critical,False
+107,sql_injection,https://vulnerableapp.net/api/products,DELETE,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,8.2,critical,False
+108,csrf,https://vulnerableapp.net/checkout,DELETE,,,No CSRF token found in form submission,medium,5.0,medium,False
+109,command_injection,https://testsite.org/api/users,GET,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,3.5,low,False
+110,file_inclusion,https://testsite.org/product,DELETE,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.5,medium,False
+111,command_injection,https://securitytesting.io/cart,DELETE,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.3,low,False
+112,idor,https://example.com/user,GET,user_id,267,Unauthorized access to resource user_id=267,low,2.4,low,False
+113,csrf,https://securitytesting.io/settings,DELETE,,,No CSRF token found in form submission,high,7.3,high,False
+114,file_inclusion,https://securitytesting.io/login,PUT,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.1,medium,False
+115,csrf,https://testsite.org/checkout,DELETE,,,No CSRF token found in form submission,info,0.7,info,True
+116,file_inclusion,https://securitytesting.io/admin,GET,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,0.1,info,False
+117,command_injection,https://example.com/api/products,DELETE,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.1,high,False
+118,file_inclusion,https://securitytesting.io/register,DELETE,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,critical,8.5,critical,False
+119,sql_injection,https://example.com/login,GET,category_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",high,5.1,medium,True
+120,csrf,https://securitytesting.io/cart,GET,,,No CSRF token found in form submission,high,8.5,critical,False
+121,xss,https://testsite.org/api/users,POST,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,7.5,high,False
+122,file_inclusion,https://webapp.com/profile,DELETE,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.3,medium,False
+123,idor,https://testsite.org/login,DELETE,file_id,694,Unauthorized access to resource file_id=694,critical,8.9,critical,False
+124,idor,https://securitytesting.io/cart,DELETE,file_id,608,Unauthorized access to resource file_id=608,high,6.5,high,False
+125,idor,https://testsite.org/api/products,GET,doc_id,806,Unauthorized access to resource doc_id=806,medium,5.0,medium,False
+126,xss,https://webapp.com/admin,POST,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,5.7,medium,True
+127,xss,https://securitytesting.io/cart,POST,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,4.5,medium,False
+128,sql_injection,https://example.com/cart,DELETE,category_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',low,4.0,medium,True
+129,command_injection,https://vulnerableapp.net/register,PUT,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.3,medium,False
+130,xss,https://example.com/profile,PUT,message,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,3.7,low,True
+131,sql_injection,https://securitytesting.io/profile,DELETE,product_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",high,7.8,high,False
+132,xss,https://vulnerableapp.net/checkout,DELETE,message,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,6.6,high,False
+133,csrf,https://testsite.org/api/users,POST,,,No CSRF token found in form submission,high,7.6,high,False
+134,file_inclusion,https://webapp.com/profile,POST,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,4.3,medium,False
+135,csrf,https://example.com/register,PUT,,,No CSRF token found in form submission,high,6.0,high,True
+136,idor,https://securitytesting.io/register,PUT,account_id,308,Unauthorized access to resource account_id=308,info,0.1,info,False
+137,sql_injection,https://vulnerableapp.net/user,PUT,category_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,5.0,medium,False
+138,command_injection,https://example.com/profile,GET,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,4.5,medium,False
+139,file_inclusion,https://testsite.org/settings,DELETE,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,critical,8.4,critical,False
+140,idor,https://webapp.com/login,POST,doc_id,818,Unauthorized access to resource doc_id=818,medium,3.6,low,False
+141,sql_injection,https://example.com/search,PUT,order_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",high,7.4,high,True
+142,sql_injection,https://example.com/checkout,DELETE,product_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,5.3,medium,False
+143,xss,https://securitytesting.io/settings,GET,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,3.2,low,False
+144,csrf,https://webapp.com/register,DELETE,,,No CSRF token found in form submission,low,2.1,low,False
+145,sql_injection,https://vulnerableapp.net/cart,GET,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.2,medium,False
+146,command_injection,https://example.com/api/users,GET,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,0.9,info,False
+147,csrf,https://securitytesting.io/cart,GET,,,No CSRF token found in form submission,medium,3.7,low,False
+148,xss,https://testsite.org/settings,POST,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,7.4,high,True
+149,file_inclusion,https://webapp.com/login,GET,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,0.8,info,False
+150,idor,https://vulnerableapp.net/api/products,DELETE,account_id,81,Unauthorized access to resource account_id=81,medium,5.9,medium,False
+151,file_inclusion,https://securitytesting.io/login,GET,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.4,medium,False
+152,xss,https://example.com/api/users,DELETE,message,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",info,0.9,info,True
+153,command_injection,https://example.com/checkout,POST,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,3.8,low,False
+154,csrf,https://webapp.com/profile,GET,,,No CSRF token found in form submission,medium,5.3,medium,False
+155,xss,https://securitytesting.io/checkout,PUT,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,5.8,medium,False
+156,command_injection,https://webapp.com/search,DELETE,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.8,high,False
+157,xss,https://example.com/api/products,POST,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",low,2.1,low,False
+158,csrf,https://example.com/api/users,GET,,,No CSRF token found in form submission,medium,3.8,low,False
+159,sql_injection,https://testsite.org/api/users,PUT,id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',high,6.7,high,True
+160,sql_injection,https://example.com/api/users,GET,id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',high,8.0,critical,False
+161,idor,https://webapp.com/login,PUT,user_id,923,Unauthorized access to resource user_id=923,critical,9.9,critical,False
+162,xss,https://example.com/profile,DELETE,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,5.3,medium,False
+163,idor,https://vulnerableapp.net/register,DELETE,file_id,998,Unauthorized access to resource file_id=998,medium,3.7,low,False
+164,idor,https://webapp.com/api/users,GET,account_id,321,Unauthorized access to resource account_id=321,high,7.8,high,False
+165,file_inclusion,https://example.com/register,GET,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,2.6,low,False
+166,csrf,https://webapp.com/checkout,GET,,,No CSRF token found in form submission,medium,4.8,medium,False
+167,idor,https://securitytesting.io/api/users,POST,user_id,461,Unauthorized access to resource user_id=461,high,6.8,high,False
+168,file_inclusion,https://example.com/product,PUT,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.3,high,False
+169,command_injection,https://securitytesting.io/user,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,3.9,low,False
+170,xss,https://testsite.org/login,DELETE,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,7.0,high,False
+171,xss,https://vulnerableapp.net/settings,GET,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,8.6,critical,False
+172,file_inclusion,https://vulnerableapp.net/search,POST,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.3,medium,False
+173,idor,https://vulnerableapp.net/api/products,GET,file_id,612,Unauthorized access to resource file_id=612,high,6.4,high,True
+174,idor,https://example.com/api/products,GET,file_id,972,Unauthorized access to resource file_id=972,low,4.2,medium,False
+175,xss,https://vulnerableapp.net/checkout,DELETE,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,low,1.7,info,False
+176,csrf,https://testsite.org/cart,DELETE,,,No CSRF token found in form submission,high,7.5,high,False
+177,sql_injection,https://vulnerableapp.net/product,POST,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',critical,9.0,critical,False
+178,file_inclusion,https://vulnerableapp.net/api/products,DELETE,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,7.8,high,True
+179,xss,https://example.com/admin,GET,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,3.6,low,False
+180,sql_injection,https://vulnerableapp.net/settings,PUT,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,4.5,medium,False
+181,xss,https://vulnerableapp.net/cart,GET,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,5.6,medium,False
+182,csrf,https://vulnerableapp.net/checkout,GET,,,No CSRF token found in form submission,high,7.3,high,False
+183,file_inclusion,https://testsite.org/profile,GET,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,8.5,critical,False
+184,file_inclusion,https://testsite.org/user,DELETE,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.3,medium,False
+185,command_injection,https://securitytesting.io/cart,GET,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.8,medium,True
+186,file_inclusion,https://example.com/api/users,PUT,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,critical,9.5,critical,True
+187,sql_injection,https://vulnerableapp.net/search,POST,product_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,8.0,critical,False
+188,file_inclusion,https://example.com/cart,GET,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,6.8,high,False
+189,sql_injection,https://securitytesting.io/cart,PUT,category_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,6.4,high,False
+190,sql_injection,https://testsite.org/search,POST,product_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',low,3.1,low,False
+191,csrf,https://example.com/user,DELETE,,,No CSRF token found in form submission,medium,5.7,medium,False
+192,csrf,https://vulnerableapp.net/cart,PUT,,,No CSRF token found in form submission,high,5.8,medium,False
+193,command_injection,https://testsite.org/product,GET,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,critical,8.4,critical,False
+194,csrf,https://webapp.com/register,PUT,,,No CSRF token found in form submission,critical,8.6,critical,False
+195,xss,https://vulnerableapp.net/api/products,POST,message,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,5.7,medium,False
+196,file_inclusion,https://testsite.org/settings,DELETE,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,critical,8.0,critical,False
+197,idor,https://vulnerableapp.net/user,PUT,doc_id,10,Unauthorized access to resource doc_id=10,high,7.3,high,False
+198,csrf,https://vulnerableapp.net/cart,PUT,,,No CSRF token found in form submission,high,7.0,high,True
+199,xss,https://vulnerableapp.net/settings,POST,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,5.0,medium,False
+200,idor,https://vulnerableapp.net/search,POST,user_id,701,Unauthorized access to resource user_id=701,medium,5.6,medium,False
+201,file_inclusion,https://webapp.com/api/users,PUT,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,6.2,high,False
+202,xss,https://webapp.com/profile,POST,search,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,6.8,high,True
+203,sql_injection,https://example.com/user,DELETE,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',critical,8.4,critical,False
+204,csrf,https://securitytesting.io/profile,DELETE,,,No CSRF token found in form submission,low,4.3,medium,False
+205,file_inclusion,https://vulnerableapp.net/search,GET,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.9,high,False
+206,file_inclusion,https://vulnerableapp.net/search,GET,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,4.3,medium,True
+207,xss,https://securitytesting.io/profile,GET,search,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,4.2,medium,False
+208,sql_injection,https://vulnerableapp.net/api/users,POST,user_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',low,2.5,low,False
+209,csrf,https://testsite.org/settings,PUT,,,No CSRF token found in form submission,medium,4.0,medium,False
+210,csrf,https://vulnerableapp.net/register,POST,,,No CSRF token found in form submission,info,2.6,low,False
+211,command_injection,https://vulnerableapp.net/user,POST,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,info,1.8,info,False
+212,csrf,https://example.com/settings,POST,,,No CSRF token found in form submission,medium,4.3,medium,False
+213,file_inclusion,https://securitytesting.io/cart,GET,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.4,low,False
+214,command_injection,https://testsite.org/search,POST,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,3.0,low,False
+215,idor,https://securitytesting.io/product,GET,file_id,347,Unauthorized access to resource file_id=347,critical,10.0,critical,False
+216,sql_injection,https://vulnerableapp.net/settings,DELETE,product_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,8.5,critical,False
+217,file_inclusion,https://example.com/admin,DELETE,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,critical,8.4,critical,False
+218,file_inclusion,https://vulnerableapp.net/login,POST,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,3.8,low,False
+219,idor,https://testsite.org/settings,POST,account_id,162,Unauthorized access to resource account_id=162,medium,4.1,medium,False
+220,file_inclusion,https://testsite.org/cart,DELETE,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.9,high,True
+221,sql_injection,https://testsite.org/settings,GET,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',critical,7.7,high,True
+222,xss,https://vulnerableapp.net/product,PUT,message,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,4.2,medium,True
+223,command_injection,https://webapp.com/checkout,GET,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,7.4,high,False
+224,sql_injection,https://example.com/settings,DELETE,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',medium,5.8,medium,False
+225,sql_injection,https://webapp.com/search,POST,id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',medium,6.6,high,True
+226,xss,https://example.com/product,GET,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,critical,10.0,critical,False
+227,csrf,https://securitytesting.io/admin,GET,,,No CSRF token found in form submission,low,1.8,info,False
+228,idor,https://example.com/api/products,PUT,account_id,349,Unauthorized access to resource account_id=349,info,1.6,info,True
+229,file_inclusion,https://vulnerableapp.net/product,PUT,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.4,high,True
+230,csrf,https://testsite.org/admin,GET,,,No CSRF token found in form submission,medium,5.5,medium,True
+231,xss,https://example.com/register,POST,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,4.4,medium,False
+232,xss,https://securitytesting.io/user,PUT,message,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,low,3.3,low,False
+233,file_inclusion,https://testsite.org/admin,POST,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.4,medium,False
+234,idor,https://testsite.org/product,DELETE,user_id,594,Unauthorized access to resource user_id=594,medium,4.8,medium,False
+235,file_inclusion,https://testsite.org/checkout,POST,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.0,high,False
+236,idor,https://example.com/login,POST,account_id,349,Unauthorized access to resource account_id=349,low,2.5,low,False
+237,csrf,https://webapp.com/settings,GET,,,No CSRF token found in form submission,high,7.6,high,False
+238,sql_injection,https://webapp.com/checkout,POST,category_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',critical,9.2,critical,False
+239,xss,https://webapp.com/login,GET,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,info,2.4,low,False
+240,command_injection,https://testsite.org/cart,POST,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.6,high,True
+241,file_inclusion,https://securitytesting.io/cart,POST,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.0,medium,False
+242,csrf,https://example.com/product,GET,,,No CSRF token found in form submission,medium,5.2,medium,False
+243,xss,https://testsite.org/register,DELETE,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,critical,10.0,critical,False
+244,xss,https://vulnerableapp.net/api/users,POST,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,6.0,high,True
+245,xss,https://webapp.com/login,POST,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",info,1.2,info,False
+246,csrf,https://webapp.com/cart,DELETE,,,No CSRF token found in form submission,high,8.0,critical,False
+247,sql_injection,https://vulnerableapp.net/profile,DELETE,id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',high,6.9,high,False
+248,xss,https://vulnerableapp.net/checkout,GET,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,8.0,critical,False
+249,file_inclusion,https://securitytesting.io/checkout,POST,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,4.1,medium,False
+250,sql_injection,https://securitytesting.io/profile,POST,product_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,4.6,medium,True
+251,command_injection,https://webapp.com/settings,POST,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.8,medium,False
+252,command_injection,https://vulnerableapp.net/cart,PUT,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.3,medium,True
+253,sql_injection,https://example.com/profile,POST,id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",low,2.7,low,False
+254,idor,https://example.com/api/products,GET,doc_id,698,Unauthorized access to resource doc_id=698,medium,4.9,medium,False
+255,command_injection,https://vulnerableapp.net/api/users,PUT,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.3,medium,True
+256,sql_injection,https://vulnerableapp.net/search,PUT,category_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,6.1,high,False
+257,command_injection,https://webapp.com/settings,DELETE,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,critical,8.3,critical,True
+258,csrf,https://example.com/login,POST,,,No CSRF token found in form submission,medium,3.1,low,False
+259,command_injection,https://example.com/settings,DELETE,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.8,medium,False
+260,sql_injection,https://vulnerableapp.net/profile,DELETE,id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',info,1.3,info,False
+261,csrf,https://testsite.org/search,POST,,,No CSRF token found in form submission,info,0.1,info,False
+262,csrf,https://vulnerableapp.net/admin,PUT,,,No CSRF token found in form submission,low,2.7,low,False
+263,file_inclusion,https://example.com/api/products,DELETE,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,critical,8.7,critical,False
+264,xss,https://example.com/checkout,PUT,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",low,3.6,low,False
+265,file_inclusion,https://vulnerableapp.net/register,DELETE,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.7,low,False
+266,file_inclusion,https://webapp.com/register,POST,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.8,medium,False
+267,idor,https://testsite.org/admin,DELETE,user_id,702,Unauthorized access to resource user_id=702,high,6.7,high,False
+268,xss,https://example.com/checkout,DELETE,search,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,7.1,high,False
+269,sql_injection,https://securitytesting.io/api/users,POST,product_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,5.7,medium,True
+270,command_injection,https://webapp.com/admin,DELETE,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,info,1.0,info,False
+271,idor,https://example.com/login,POST,account_id,641,Unauthorized access to resource account_id=641,info,1.5,info,False
+272,sql_injection,https://vulnerableapp.net/profile,DELETE,category_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',low,3.4,low,False
+273,xss,https://example.com/product,POST,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,4.8,medium,True
+274,xss,https://webapp.com/settings,GET,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,critical,8.2,critical,False
+275,command_injection,https://securitytesting.io/api/products,DELETE,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.5,medium,False
+276,command_injection,https://webapp.com/search,POST,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,6.2,high,True
+277,file_inclusion,https://securitytesting.io/cart,PUT,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,3.5,low,False
+278,idor,https://vulnerableapp.net/user,DELETE,file_id,166,Unauthorized access to resource file_id=166,medium,4.9,medium,False
+279,sql_injection,https://testsite.org/api/users,POST,category_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',medium,3.8,low,False
+280,idor,https://testsite.org/cart,POST,doc_id,674,Unauthorized access to resource doc_id=674,low,2.8,low,False
+281,csrf,https://vulnerableapp.net/checkout,GET,,,No CSRF token found in form submission,critical,8.5,critical,True
+282,sql_injection,https://example.com/search,PUT,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',low,3.0,low,False
+283,sql_injection,https://vulnerableapp.net/api/users,PUT,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,3.4,low,False
+284,file_inclusion,https://example.com/user,GET,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,3.8,low,False
+285,xss,https://vulnerableapp.net/admin,PUT,message,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,5.1,medium,False
+286,command_injection,https://securitytesting.io/search,GET,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,2.5,low,True
+287,idor,https://vulnerableapp.net/product,POST,user_id,686,Unauthorized access to resource user_id=686,low,2.0,low,False
+288,csrf,https://webapp.com/product,POST,,,No CSRF token found in form submission,critical,7.7,high,False
+289,csrf,https://webapp.com/register,GET,,,No CSRF token found in form submission,info,1.3,info,False
+290,sql_injection,https://example.com/api/users,PUT,product_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,6.0,high,False
+291,command_injection,https://vulnerableapp.net/api/users,PUT,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,0.2,info,False
+292,command_injection,https://securitytesting.io/settings,PUT,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,0.1,info,False
+293,sql_injection,https://securitytesting.io/login,POST,id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,5.7,medium,True
+294,file_inclusion,https://vulnerableapp.net/register,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,7.2,high,False
+295,sql_injection,https://vulnerableapp.net/product,POST,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',info,0.7,info,False
+296,file_inclusion,https://securitytesting.io/api/users,DELETE,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.4,medium,False
+297,csrf,https://example.com/profile,DELETE,,,No CSRF token found in form submission,low,2.3,low,False
+298,file_inclusion,https://vulnerableapp.net/register,POST,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,3.7,low,True
+299,xss,https://securitytesting.io/api/users,POST,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,critical,8.8,critical,False
+300,file_inclusion,https://testsite.org/search,GET,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.1,medium,False
+301,idor,https://example.com/admin,DELETE,account_id,376,Unauthorized access to resource account_id=376,info,0.7,info,False
+302,file_inclusion,https://webapp.com/register,DELETE,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.0,medium,True
+303,sql_injection,https://example.com/login,GET,category_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,4.1,medium,False
+304,idor,https://testsite.org/api/users,PUT,user_id,636,Unauthorized access to resource user_id=636,high,7.7,high,False
+305,csrf,https://testsite.org/checkout,POST,,,No CSRF token found in form submission,low,1.3,info,False
+306,sql_injection,https://webapp.com/checkout,POST,id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",info,0.7,info,True
+307,xss,https://webapp.com/checkout,DELETE,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,6.8,high,False
+308,idor,https://example.com/admin,DELETE,user_id,4,Unauthorized access to resource user_id=4,high,7.5,high,True
+309,file_inclusion,https://example.com/settings,GET,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.3,medium,False
+310,idor,https://example.com/login,PUT,user_id,480,Unauthorized access to resource user_id=480,medium,5.4,medium,True
+311,command_injection,https://vulnerableapp.net/login,POST,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,3.4,low,False
+312,file_inclusion,https://testsite.org/checkout,POST,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.0,medium,False
+313,sql_injection,https://securitytesting.io/user,DELETE,product_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,5.4,medium,False
+314,idor,https://securitytesting.io/checkout,POST,account_id,468,Unauthorized access to resource account_id=468,high,6.5,high,False
+315,idor,https://securitytesting.io/search,DELETE,user_id,264,Unauthorized access to resource user_id=264,medium,5.1,medium,False
+316,file_inclusion,https://webapp.com/profile,PUT,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.4,high,False
+317,file_inclusion,https://webapp.com/user,DELETE,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.8,medium,False
+318,command_injection,https://testsite.org/api/products,GET,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,8.1,critical,True
+319,file_inclusion,https://testsite.org/api/products,DELETE,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,3.7,low,False
+320,xss,https://securitytesting.io/api/products,POST,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,4.2,medium,False
+321,file_inclusion,https://webapp.com/api/products,POST,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,6.3,high,False
+322,sql_injection,https://testsite.org/login,GET,user_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',info,1.7,info,False
+323,sql_injection,https://vulnerableapp.net/api/users,DELETE,category_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,4.5,medium,True
+324,csrf,https://example.com/api/users,GET,,,No CSRF token found in form submission,medium,5.4,medium,True
+325,idor,https://vulnerableapp.net/login,POST,account_id,919,Unauthorized access to resource account_id=919,low,3.8,low,True
+326,idor,https://securitytesting.io/product,GET,account_id,472,Unauthorized access to resource account_id=472,critical,8.8,critical,False
+327,idor,https://example.com/api/products,DELETE,doc_id,552,Unauthorized access to resource doc_id=552,critical,9.1,critical,True
+328,csrf,https://testsite.org/cart,PUT,,,No CSRF token found in form submission,info,1.1,info,False
+329,xss,https://securitytesting.io/search,GET,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,critical,8.7,critical,False
+330,xss,https://vulnerableapp.net/cart,DELETE,message,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,3.6,low,False
+331,csrf,https://vulnerableapp.net/profile,GET,,,No CSRF token found in form submission,low,3.6,low,False
+332,csrf,https://vulnerableapp.net/search,GET,,,No CSRF token found in form submission,info,0.7,info,True
+333,command_injection,https://vulnerableapp.net/user,DELETE,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,8.2,critical,False
+334,command_injection,https://testsite.org/register,POST,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,3.8,low,False
+335,idor,https://example.com/admin,GET,doc_id,122,Unauthorized access to resource doc_id=122,medium,5.1,medium,False
+336,file_inclusion,https://securitytesting.io/product,DELETE,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,2.5,low,False
+337,csrf,https://vulnerableapp.net/checkout,GET,,,No CSRF token found in form submission,low,4.4,medium,False
+338,csrf,https://testsite.org/cart,POST,,,No CSRF token found in form submission,medium,5.8,medium,False
+339,csrf,https://vulnerableapp.net/settings,PUT,,,No CSRF token found in form submission,medium,4.1,medium,False
+340,csrf,https://webapp.com/checkout,DELETE,,,No CSRF token found in form submission,critical,9.7,critical,False
+341,idor,https://vulnerableapp.net/api/products,POST,user_id,91,Unauthorized access to resource user_id=91,high,7.6,high,True
+342,csrf,https://example.com/search,PUT,,,No CSRF token found in form submission,medium,4.9,medium,False
+343,command_injection,https://testsite.org/api/users,GET,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,7.6,high,True
+344,file_inclusion,https://securitytesting.io/search,POST,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,9.1,critical,False
+345,command_injection,https://vulnerableapp.net/user,POST,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.3,low,False
+346,command_injection,https://testsite.org/checkout,POST,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.4,medium,True
+347,csrf,https://testsite.org/cart,POST,,,No CSRF token found in form submission,medium,5.8,medium,False
+348,sql_injection,https://webapp.com/profile,PUT,id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",low,1.4,info,False
+349,command_injection,https://webapp.com/settings,DELETE,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,9.5,critical,False
+350,idor,https://webapp.com/checkout,DELETE,user_id,559,Unauthorized access to resource user_id=559,info,0.6,info,True
+351,idor,https://vulnerableapp.net/register,DELETE,doc_id,351,Unauthorized access to resource doc_id=351,medium,6.2,high,False
+352,csrf,https://vulnerableapp.net/api/users,POST,,,No CSRF token found in form submission,high,6.3,high,False
+353,command_injection,https://example.com/user,DELETE,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,3.4,low,True
+354,csrf,https://example.com/checkout,POST,,,No CSRF token found in form submission,info,2.2,low,False
+355,csrf,https://securitytesting.io/register,PUT,,,No CSRF token found in form submission,critical,9.4,critical,False
+356,csrf,https://webapp.com/cart,PUT,,,No CSRF token found in form submission,medium,4.5,medium,False
+357,sql_injection,https://example.com/login,PUT,category_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,6.5,high,False
+358,file_inclusion,https://testsite.org/login,DELETE,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,5.9,medium,False
+359,csrf,https://securitytesting.io/search,GET,,,No CSRF token found in form submission,critical,8.9,critical,True
+360,file_inclusion,https://vulnerableapp.net/settings,POST,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.1,medium,True
+361,sql_injection,https://example.com/login,GET,category_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',critical,9.9,critical,False
+362,sql_injection,https://securitytesting.io/user,GET,id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',info,0.4,info,False
+363,command_injection,https://vulnerableapp.net/register,DELETE,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.5,medium,False
+364,csrf,https://webapp.com/register,GET,,,No CSRF token found in form submission,medium,6.6,high,False
+365,command_injection,https://webapp.com/settings,DELETE,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,0.6,info,False
+366,csrf,https://example.com/settings,DELETE,,,No CSRF token found in form submission,info,0.1,info,True
+367,command_injection,https://vulnerableapp.net/user,DELETE,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,8.0,critical,False
+368,sql_injection,https://testsite.org/settings,POST,user_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',info,0.4,info,False
+369,idor,https://testsite.org/register,DELETE,doc_id,125,Unauthorized access to resource doc_id=125,medium,4.3,medium,False
+370,csrf,https://securitytesting.io/cart,PUT,,,No CSRF token found in form submission,medium,3.8,low,True
+371,command_injection,https://example.com/cart,PUT,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.6,medium,False
+372,sql_injection,https://vulnerableapp.net/api/products,GET,id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',info,0.1,info,False
+373,idor,https://securitytesting.io/login,GET,file_id,846,Unauthorized access to resource file_id=846,medium,4.1,medium,False
+374,idor,https://securitytesting.io/login,POST,user_id,417,Unauthorized access to resource user_id=417,medium,3.8,low,False
+375,command_injection,https://vulnerableapp.net/settings,GET,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,6.2,high,False
+376,idor,https://securitytesting.io/cart,POST,file_id,325,Unauthorized access to resource file_id=325,medium,5.5,medium,False
+377,command_injection,https://securitytesting.io/search,DELETE,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.4,medium,True
+378,sql_injection,https://securitytesting.io/user,PUT,order_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',info,1.5,info,False
+379,idor,https://securitytesting.io/settings,DELETE,account_id,426,Unauthorized access to resource account_id=426,low,3.2,low,False
+380,idor,https://example.com/register,PUT,doc_id,243,Unauthorized access to resource doc_id=243,low,4.6,medium,False
+381,csrf,https://securitytesting.io/product,GET,,,No CSRF token found in form submission,medium,4.5,medium,False
+382,xss,https://webapp.com/search,DELETE,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,8.0,critical,False
+383,file_inclusion,https://securitytesting.io/register,POST,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,2.3,low,False
+384,file_inclusion,https://vulnerableapp.net/register,PUT,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.0,medium,False
+385,csrf,https://example.com/login,PUT,,,No CSRF token found in form submission,medium,5.5,medium,False
+386,sql_injection,https://securitytesting.io/login,PUT,product_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,5.4,medium,False
+387,xss,https://vulnerableapp.net/profile,PUT,comment,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,7.6,high,False
+388,sql_injection,https://securitytesting.io/checkout,PUT,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,6.1,high,True
+389,csrf,https://testsite.org/product,POST,,,No CSRF token found in form submission,medium,4.6,medium,False
+390,csrf,https://example.com/profile,GET,,,No CSRF token found in form submission,medium,4.4,medium,True
+391,command_injection,https://testsite.org/api/products,POST,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,critical,8.7,critical,True
+392,xss,https://webapp.com/register,POST,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,info,1.0,info,False
+393,xss,https://vulnerableapp.net/settings,GET,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,2.6,low,True
+394,file_inclusion,https://vulnerableapp.net/product,POST,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.7,medium,False
+395,command_injection,https://example.com/profile,PUT,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,6.0,high,False
+396,file_inclusion,https://vulnerableapp.net/user,PUT,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,1.9,info,False
+397,xss,https://securitytesting.io/settings,PUT,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,info,1.4,info,False
+398,file_inclusion,https://webapp.com/cart,POST,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,8.7,critical,False
+399,idor,https://webapp.com/checkout,PUT,file_id,982,Unauthorized access to resource file_id=982,low,3.5,low,False
+400,file_inclusion,https://webapp.com/cart,PUT,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,3.7,low,True
+401,sql_injection,https://testsite.org/api/users,GET,product_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',low,2.4,low,False
+402,idor,https://example.com/login,GET,doc_id,964,Unauthorized access to resource doc_id=964,medium,4.7,medium,True
+403,idor,https://vulnerableapp.net/profile,PUT,account_id,460,Unauthorized access to resource account_id=460,info,2.3,low,True
+404,idor,https://vulnerableapp.net/cart,POST,doc_id,580,Unauthorized access to resource doc_id=580,medium,4.4,medium,False
+405,idor,https://example.com/settings,DELETE,account_id,800,Unauthorized access to resource account_id=800,critical,7.9,high,False
+406,idor,https://example.com/register,GET,file_id,314,Unauthorized access to resource file_id=314,high,6.4,high,False
+407,xss,https://example.com/admin,GET,message,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,info,0.1,info,False
+408,file_inclusion,https://example.com/api/products,DELETE,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,8.2,critical,False
+409,csrf,https://securitytesting.io/user,DELETE,,,No CSRF token found in form submission,medium,4.3,medium,True
+410,csrf,https://securitytesting.io/settings,GET,,,No CSRF token found in form submission,critical,9.0,critical,False
+411,csrf,https://vulnerableapp.net/api/products,GET,,,No CSRF token found in form submission,medium,3.7,low,False
+412,csrf,https://vulnerableapp.net/search,DELETE,,,No CSRF token found in form submission,low,2.3,low,False
+413,file_inclusion,https://securitytesting.io/profile,DELETE,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,7.3,high,False
+414,csrf,https://example.com/cart,GET,,,No CSRF token found in form submission,medium,4.6,medium,False
+415,sql_injection,https://securitytesting.io/login,POST,id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,4.6,medium,False
+416,csrf,https://securitytesting.io/product,PUT,,,No CSRF token found in form submission,medium,6.7,high,True
+417,command_injection,https://example.com/admin,GET,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,6.7,high,False
+418,command_injection,https://testsite.org/checkout,POST,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.4,medium,False
+419,csrf,https://example.com/search,PUT,,,No CSRF token found in form submission,high,6.7,high,False
+420,xss,https://vulnerableapp.net/cart,POST,message,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,6.5,high,False
+421,sql_injection,https://testsite.org/register,POST,user_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,3.9,low,False
+422,xss,https://securitytesting.io/product,PUT,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,5.6,medium,False
+423,idor,https://testsite.org/product,GET,file_id,624,Unauthorized access to resource file_id=624,medium,3.4,low,False
+424,command_injection,https://securitytesting.io/search,DELETE,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,2.2,low,False
+425,csrf,https://example.com/product,POST,,,No CSRF token found in form submission,high,7.4,high,True
+426,xss,https://webapp.com/settings,GET,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,low,3.0,low,False
+427,file_inclusion,https://securitytesting.io/user,PUT,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,1.9,info,True
+428,idor,https://example.com/cart,PUT,file_id,323,Unauthorized access to resource file_id=323,high,7.8,high,False
+429,csrf,https://example.com/checkout,GET,,,No CSRF token found in form submission,critical,9.9,critical,False
+430,idor,https://testsite.org/cart,DELETE,doc_id,636,Unauthorized access to resource doc_id=636,medium,4.9,medium,True
+431,sql_injection,https://webapp.com/checkout,GET,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.8,medium,False
+432,file_inclusion,https://example.com/user,DELETE,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.5,medium,False
+433,csrf,https://testsite.org/login,GET,,,No CSRF token found in form submission,high,6.4,high,False
+434,csrf,https://securitytesting.io/admin,DELETE,,,No CSRF token found in form submission,high,8.5,critical,False
+435,xss,https://securitytesting.io/settings,PUT,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,5.9,medium,False
+436,xss,https://vulnerableapp.net/checkout,GET,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,info,0.6,info,False
+437,idor,https://vulnerableapp.net/api/products,GET,doc_id,10,Unauthorized access to resource doc_id=10,high,6.3,high,False
+438,command_injection,https://testsite.org/admin,GET,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,8.7,critical,True
+439,idor,https://vulnerableapp.net/cart,GET,user_id,531,Unauthorized access to resource user_id=531,low,3.0,low,True
+440,sql_injection,https://example.com/admin,POST,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.5,medium,False
+441,file_inclusion,https://webapp.com/settings,POST,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.5,medium,False
+442,file_inclusion,https://webapp.com/product,POST,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,5.5,medium,False
+443,idor,https://webapp.com/login,PUT,doc_id,356,Unauthorized access to resource doc_id=356,low,3.8,low,False
+444,csrf,https://securitytesting.io/product,PUT,,,No CSRF token found in form submission,high,7.6,high,False
+445,sql_injection,https://testsite.org/api/users,PUT,id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',high,6.7,high,True
+446,xss,https://webapp.com/admin,PUT,message,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,1.7,info,False
+447,file_inclusion,https://vulnerableapp.net/login,POST,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.4,high,False
+448,idor,https://webapp.com/product,PUT,file_id,679,Unauthorized access to resource file_id=679,critical,9.7,critical,False
+449,command_injection,https://example.com/checkout,DELETE,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.6,medium,True
+450,xss,https://example.com/settings,DELETE,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,6.7,high,False
+451,file_inclusion,https://testsite.org/search,DELETE,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.1,medium,False
+452,csrf,https://testsite.org/user,DELETE,,,No CSRF token found in form submission,medium,4.3,medium,False
+453,sql_injection,https://vulnerableapp.net/register,PUT,order_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",high,7.1,high,False
+454,idor,https://securitytesting.io/checkout,PUT,user_id,656,Unauthorized access to resource user_id=656,medium,5.4,medium,True
+455,sql_injection,https://securitytesting.io/api/users,POST,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.5,medium,False
+456,sql_injection,https://testsite.org/admin,PUT,category_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,6.9,high,True
+457,csrf,https://webapp.com/product,PUT,,,No CSRF token found in form submission,high,6.7,high,True
+458,xss,https://securitytesting.io/register,DELETE,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,6.4,high,False
+459,command_injection,https://example.com/product,PUT,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,6.8,high,False
+460,file_inclusion,https://example.com/api/users,POST,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.4,high,True
+461,sql_injection,https://example.com/api/products,POST,id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,4.1,medium,True
+462,xss,https://securitytesting.io/admin,DELETE,comment,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,4.8,medium,False
+463,idor,https://testsite.org/search,POST,user_id,643,Unauthorized access to resource user_id=643,critical,10.0,critical,True
+464,csrf,https://testsite.org/register,GET,,,No CSRF token found in form submission,medium,5.4,medium,False
+465,command_injection,https://webapp.com/admin,PUT,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,3.9,low,True
+466,file_inclusion,https://testsite.org/settings,POST,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.5,high,False
+467,xss,https://example.com/search,DELETE,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,1.7,info,False
+468,idor,https://testsite.org/register,PUT,account_id,922,Unauthorized access to resource account_id=922,critical,8.3,critical,False
+469,file_inclusion,https://testsite.org/user,GET,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.8,medium,False
+470,command_injection,https://securitytesting.io/login,PUT,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.5,medium,False
+471,csrf,https://testsite.org/search,GET,,,No CSRF token found in form submission,medium,5.8,medium,False
+472,csrf,https://vulnerableapp.net/user,DELETE,,,No CSRF token found in form submission,high,6.8,high,False
+473,xss,https://webapp.com/cart,POST,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",low,3.9,low,False
+474,sql_injection,https://example.com/login,PUT,user_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",critical,8.3,critical,False
+475,command_injection,https://securitytesting.io/search,POST,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.5,medium,False
+476,xss,https://securitytesting.io/checkout,POST,q,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,5.0,medium,False
+477,sql_injection,https://testsite.org/search,POST,order_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',low,3.0,low,False
+478,command_injection,https://example.com/settings,DELETE,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,7.0,high,True
+479,sql_injection,https://webapp.com/register,PUT,user_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',low,3.4,low,False
+480,csrf,https://vulnerableapp.net/admin,DELETE,,,No CSRF token found in form submission,high,7.6,high,False
+481,xss,https://vulnerableapp.net/api/users,POST,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,8.4,critical,False
+482,xss,https://securitytesting.io/settings,GET,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,8.3,critical,False
+483,sql_injection,https://vulnerableapp.net/cart,PUT,category_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",high,6.6,high,False
+484,sql_injection,https://webapp.com/checkout,PUT,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',low,2.1,low,False
+485,csrf,https://webapp.com/user,DELETE,,,No CSRF token found in form submission,high,7.1,high,False
+486,idor,https://securitytesting.io/checkout,PUT,user_id,230,Unauthorized access to resource user_id=230,critical,9.1,critical,False
+487,command_injection,https://vulnerableapp.net/cart,PUT,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.8,low,True
+488,sql_injection,https://vulnerableapp.net/settings,POST,product_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,4.2,medium,False
+489,csrf,https://vulnerableapp.net/login,POST,,,No CSRF token found in form submission,low,2.7,low,False
+490,idor,https://securitytesting.io/api/users,POST,file_id,937,Unauthorized access to resource file_id=937,medium,5.6,medium,False
+491,command_injection,https://example.com/cart,POST,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.1,medium,False
+492,sql_injection,https://securitytesting.io/api/users,POST,category_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,6.5,high,True
+493,command_injection,https://vulnerableapp.net/api/products,PUT,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.5,medium,False
+494,idor,https://vulnerableapp.net/api/users,DELETE,account_id,636,Unauthorized access to resource account_id=636,medium,4.9,medium,True
+495,csrf,https://example.com/checkout,DELETE,,,No CSRF token found in form submission,medium,4.8,medium,True
+496,file_inclusion,https://example.com/product,PUT,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.3,medium,True
+497,file_inclusion,https://webapp.com/cart,POST,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.5,medium,False
+498,idor,https://testsite.org/search,DELETE,file_id,387,Unauthorized access to resource file_id=387,low,4.8,medium,False
+499,command_injection,https://vulnerableapp.net/register,PUT,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.1,high,True
+500,sql_injection,https://webapp.com/search,POST,id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,6.4,high,False
+501,idor,https://webapp.com/login,POST,file_id,830,Unauthorized access to resource file_id=830,low,3.8,low,False
+502,command_injection,https://example.com/cart,DELETE,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,7.5,high,True
+503,command_injection,https://securitytesting.io/profile,PUT,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,6.0,high,False
+504,file_inclusion,https://vulnerableapp.net/settings,PUT,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.7,medium,False
+505,idor,https://vulnerableapp.net/api/users,POST,account_id,359,Unauthorized access to resource account_id=359,high,7.3,high,False
+506,sql_injection,https://securitytesting.io/checkout,PUT,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',low,2.6,low,True
+507,file_inclusion,https://testsite.org/product,POST,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,1.0,info,False
+508,xss,https://webapp.com/api/users,DELETE,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,7.0,high,False
+509,xss,https://webapp.com/admin,POST,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,5.7,medium,False
+510,command_injection,https://vulnerableapp.net/api/products,PUT,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.6,medium,False
+511,idor,https://webapp.com/profile,POST,user_id,823,Unauthorized access to resource user_id=823,high,6.7,high,True
+512,idor,https://testsite.org/cart,DELETE,doc_id,183,Unauthorized access to resource doc_id=183,high,7.1,high,False
+513,file_inclusion,https://example.com/user,DELETE,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,2.9,low,False
+514,file_inclusion,https://testsite.org/api/products,GET,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.0,medium,True
+515,sql_injection,https://securitytesting.io/settings,DELETE,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.9,medium,False
+516,sql_injection,https://vulnerableapp.net/api/products,GET,category_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',medium,5.4,medium,False
+517,csrf,https://webapp.com/settings,GET,,,No CSRF token found in form submission,high,7.8,high,False
+518,command_injection,https://example.com/api/products,DELETE,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,1.8,info,False
+519,xss,https://securitytesting.io/profile,POST,comment,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,6.8,high,False
+520,csrf,https://testsite.org/api/users,DELETE,,,No CSRF token found in form submission,medium,5.4,medium,False
+521,xss,https://webapp.com/admin,POST,q,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,4.7,medium,False
+522,xss,https://vulnerableapp.net/admin,DELETE,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,info,1.3,info,False
+523,sql_injection,https://testsite.org/product,GET,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',critical,9.2,critical,False
+524,csrf,https://securitytesting.io/api/products,GET,,,No CSRF token found in form submission,medium,5.3,medium,False
+525,sql_injection,https://securitytesting.io/api/products,GET,id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',info,2.1,low,False
+526,csrf,https://vulnerableapp.net/search,POST,,,No CSRF token found in form submission,medium,4.3,medium,False
+527,xss,https://securitytesting.io/search,PUT,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,7.2,high,True
+528,idor,https://testsite.org/cart,POST,doc_id,338,Unauthorized access to resource doc_id=338,critical,8.4,critical,False
+529,idor,https://webapp.com/login,POST,doc_id,357,Unauthorized access to resource doc_id=357,medium,4.9,medium,False
+530,idor,https://testsite.org/profile,GET,doc_id,485,Unauthorized access to resource doc_id=485,medium,5.0,medium,False
+531,xss,https://testsite.org/profile,GET,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,low,4.3,medium,False
+532,idor,https://vulnerableapp.net/user,GET,account_id,148,Unauthorized access to resource account_id=148,medium,5.9,medium,False
+533,sql_injection,https://testsite.org/settings,GET,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',critical,9.3,critical,False
+534,sql_injection,https://example.com/search,GET,product_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,4.9,medium,True
+535,xss,https://webapp.com/user,GET,search,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,7.0,high,False
+536,file_inclusion,https://webapp.com/api/products,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,0.5,info,False
+537,command_injection,https://testsite.org/checkout,GET,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,6.8,high,True
+538,xss,https://example.com/cart,DELETE,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,4.7,medium,False
+539,command_injection,https://example.com/settings,PUT,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.0,high,False
+540,idor,https://vulnerableapp.net/cart,DELETE,file_id,530,Unauthorized access to resource file_id=530,critical,9.6,critical,False
+541,idor,https://webapp.com/admin,POST,file_id,456,Unauthorized access to resource file_id=456,low,2.0,low,False
+542,idor,https://vulnerableapp.net/register,GET,doc_id,654,Unauthorized access to resource doc_id=654,low,3.9,low,False
+543,xss,https://vulnerableapp.net/checkout,POST,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,3.4,low,False
+544,csrf,https://webapp.com/api/users,DELETE,,,No CSRF token found in form submission,medium,4.3,medium,False
+545,xss,https://testsite.org/settings,PUT,comment,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,5.8,medium,False
+546,command_injection,https://testsite.org/api/users,DELETE,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.5,high,False
+547,idor,https://vulnerableapp.net/api/products,GET,account_id,782,Unauthorized access to resource account_id=782,medium,5.5,medium,False
+548,file_inclusion,https://webapp.com/profile,GET,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,critical,9.9,critical,False
+549,csrf,https://testsite.org/settings,POST,,,No CSRF token found in form submission,medium,5.5,medium,False
+550,file_inclusion,https://testsite.org/profile,POST,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.0,medium,False
+551,file_inclusion,https://webapp.com/settings,GET,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.5,high,False
+552,xss,https://testsite.org/user,PUT,search,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,4.3,medium,False
+553,command_injection,https://securitytesting.io/register,POST,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,critical,7.6,high,False
+554,idor,https://webapp.com/login,POST,doc_id,673,Unauthorized access to resource doc_id=673,medium,3.9,low,True
+555,idor,https://example.com/user,PUT,account_id,311,Unauthorized access to resource account_id=311,info,1.1,info,True
+556,csrf,https://securitytesting.io/api/users,PUT,,,No CSRF token found in form submission,medium,4.6,medium,False
+557,idor,https://securitytesting.io/login,PUT,doc_id,756,Unauthorized access to resource doc_id=756,info,0.1,info,False
+558,csrf,https://example.com/user,PUT,,,No CSRF token found in form submission,critical,9.1,critical,False
+559,idor,https://vulnerableapp.net/product,GET,file_id,822,Unauthorized access to resource file_id=822,medium,3.7,low,False
+560,idor,https://example.com/api/users,PUT,user_id,554,Unauthorized access to resource user_id=554,medium,5.6,medium,True
+561,file_inclusion,https://testsite.org/user,PUT,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.4,medium,False
+562,file_inclusion,https://vulnerableapp.net/api/products,PUT,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,3.7,low,False
+563,sql_injection,https://example.com/login,GET,category_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,6.0,high,True
+564,idor,https://example.com/checkout,PUT,user_id,671,Unauthorized access to resource user_id=671,low,3.1,low,False
+565,file_inclusion,https://example.com/login,DELETE,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.8,medium,False
+566,csrf,https://securitytesting.io/profile,GET,,,No CSRF token found in form submission,medium,4.8,medium,True
+567,command_injection,https://testsite.org/register,DELETE,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,2.4,low,False
+568,csrf,https://securitytesting.io/search,DELETE,,,No CSRF token found in form submission,critical,9.1,critical,False
+569,command_injection,https://example.com/search,POST,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.5,low,False
+570,file_inclusion,https://webapp.com/api/products,GET,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,info,0.1,info,False
+571,xss,https://example.com/api/products,GET,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",low,4.4,medium,False
+572,xss,https://testsite.org/profile,DELETE,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,3.5,low,False
+573,file_inclusion,https://securitytesting.io/profile,GET,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,info,2.1,low,False
+574,command_injection,https://example.com/cart,DELETE,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,6.0,high,True
+575,file_inclusion,https://vulnerableapp.net/product,PUT,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.9,medium,True
+576,file_inclusion,https://vulnerableapp.net/product,GET,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,2.7,low,False
+577,xss,https://vulnerableapp.net/settings,GET,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,4.6,medium,False
+578,xss,https://securitytesting.io/api/users,POST,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,3.0,low,True
+579,sql_injection,https://example.com/cart,DELETE,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',medium,4.2,medium,False
+580,csrf,https://testsite.org/settings,POST,,,No CSRF token found in form submission,medium,5.2,medium,False
+581,file_inclusion,https://example.com/admin,PUT,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,8.1,critical,False
+582,sql_injection,https://testsite.org/profile,DELETE,product_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',critical,8.3,critical,False
+583,command_injection,https://securitytesting.io/api/products,GET,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.9,medium,False
+584,sql_injection,https://securitytesting.io/settings,PUT,category_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",high,5.9,medium,False
+585,sql_injection,https://example.com/register,POST,id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',medium,4.1,medium,False
+586,xss,https://testsite.org/login,POST,comment,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,6.7,high,False
+587,file_inclusion,https://securitytesting.io/product,POST,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,1.1,info,False
+588,xss,https://securitytesting.io/cart,PUT,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,6.7,high,False
+589,idor,https://testsite.org/api/users,GET,account_id,449,Unauthorized access to resource account_id=449,low,2.6,low,False
+590,command_injection,https://webapp.com/settings,DELETE,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,6.8,high,False
+591,sql_injection,https://securitytesting.io/profile,PUT,order_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,4.1,medium,True
+592,sql_injection,https://securitytesting.io/login,POST,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.3,medium,False
+593,command_injection,https://webapp.com/product,PUT,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.9,medium,False
+594,idor,https://vulnerableapp.net/user,PUT,file_id,524,Unauthorized access to resource file_id=524,high,6.4,high,False
+595,command_injection,https://webapp.com/api/users,DELETE,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.5,medium,False
+596,csrf,https://vulnerableapp.net/checkout,DELETE,,,No CSRF token found in form submission,info,0.1,info,False
+597,idor,https://vulnerableapp.net/settings,PUT,user_id,917,Unauthorized access to resource user_id=917,critical,8.9,critical,False
+598,command_injection,https://securitytesting.io/settings,PUT,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.7,medium,True
+599,csrf,https://vulnerableapp.net/admin,POST,,,No CSRF token found in form submission,medium,5.1,medium,False
+600,idor,https://webapp.com/admin,DELETE,doc_id,292,Unauthorized access to resource doc_id=292,high,7.4,high,False
+601,command_injection,https://testsite.org/register,POST,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.1,medium,False
+602,command_injection,https://testsite.org/login,DELETE,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,6.6,high,False
+603,file_inclusion,https://webapp.com/cart,DELETE,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.2,high,False
+604,xss,https://vulnerableapp.net/admin,POST,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,info,2.4,low,True
+605,idor,https://securitytesting.io/product,DELETE,user_id,122,Unauthorized access to resource user_id=122,medium,5.1,medium,False
+606,idor,https://webapp.com/api/users,GET,account_id,300,Unauthorized access to resource account_id=300,medium,5.0,medium,True
+607,command_injection,https://webapp.com/cart,GET,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.9,low,False
+608,xss,https://vulnerableapp.net/cart,GET,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,5.8,medium,False
+609,sql_injection,https://testsite.org/admin,DELETE,product_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,4.2,medium,False
+610,idor,https://securitytesting.io/user,DELETE,account_id,497,Unauthorized access to resource account_id=497,high,6.3,high,False
+611,csrf,https://securitytesting.io/user,PUT,,,No CSRF token found in form submission,medium,4.5,medium,False
+612,idor,https://testsite.org/api/products,POST,user_id,642,Unauthorized access to resource user_id=642,medium,4.1,medium,False
+613,file_inclusion,https://vulnerableapp.net/register,DELETE,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.5,medium,False
+614,sql_injection,https://example.com/settings,PUT,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',low,4.3,medium,True
+615,xss,https://securitytesting.io/api/users,DELETE,search,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,6.7,high,False
+616,file_inclusion,https://example.com/api/products,PUT,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.3,medium,False
+617,command_injection,https://webapp.com/checkout,DELETE,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,2.6,low,False
+618,csrf,https://vulnerableapp.net/settings,PUT,,,No CSRF token found in form submission,medium,4.7,medium,False
+619,command_injection,https://securitytesting.io/cart,POST,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,8.0,critical,False
+620,sql_injection,https://webapp.com/register,DELETE,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',low,3.7,low,False
+621,sql_injection,https://testsite.org/login,DELETE,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,6.5,high,False
+622,command_injection,https://testsite.org/admin,POST,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,critical,7.5,high,False
+623,csrf,https://webapp.com/search,DELETE,,,No CSRF token found in form submission,critical,8.8,critical,False
+624,file_inclusion,https://vulnerableapp.net/settings,PUT,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,7.1,high,False
+625,xss,https://webapp.com/user,GET,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,6.8,high,False
+626,csrf,https://webapp.com/login,DELETE,,,No CSRF token found in form submission,high,7.6,high,False
+627,file_inclusion,https://webapp.com/cart,DELETE,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,4.8,medium,False
+628,command_injection,https://vulnerableapp.net/cart,GET,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,1.2,info,False
+629,file_inclusion,https://testsite.org/register,DELETE,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,3.8,low,False
+630,file_inclusion,https://webapp.com/login,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,3.1,low,True
+631,idor,https://webapp.com/login,POST,account_id,486,Unauthorized access to resource account_id=486,high,8.9,critical,False
+632,idor,https://securitytesting.io/login,DELETE,account_id,622,Unauthorized access to resource account_id=622,critical,8.5,critical,False
+633,file_inclusion,https://webapp.com/api/users,POST,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,3.2,low,False
+634,csrf,https://webapp.com/api/users,POST,,,No CSRF token found in form submission,medium,3.6,low,True
+635,xss,https://testsite.org/admin,POST,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,2.3,low,False
+636,csrf,https://testsite.org/admin,GET,,,No CSRF token found in form submission,medium,4.4,medium,False
+637,command_injection,https://vulnerableapp.net/api/users,DELETE,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,3.7,low,False
+638,xss,https://example.com/search,POST,search,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,5.2,medium,False
+639,xss,https://example.com/register,GET,search,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",low,2.8,low,True
+640,idor,https://securitytesting.io/cart,PUT,account_id,567,Unauthorized access to resource account_id=567,medium,4.7,medium,True
+641,xss,https://example.com/cart,GET,message,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",critical,8.7,critical,False
+642,command_injection,https://testsite.org/product,POST,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,7.3,high,True
+643,idor,https://securitytesting.io/user,GET,doc_id,953,Unauthorized access to resource doc_id=953,medium,5.6,medium,True
+644,file_inclusion,https://testsite.org/register,DELETE,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.0,medium,False
+645,xss,https://vulnerableapp.net/product,GET,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,7.6,high,False
+646,sql_injection,https://vulnerableapp.net/cart,PUT,user_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,6.8,high,False
+647,idor,https://securitytesting.io/search,DELETE,doc_id,822,Unauthorized access to resource doc_id=822,medium,4.2,medium,False
+648,file_inclusion,https://testsite.org/register,POST,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.8,medium,False
+649,csrf,https://webapp.com/admin,PUT,,,No CSRF token found in form submission,high,8.0,critical,False
+650,xss,https://example.com/cart,DELETE,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,critical,8.6,critical,False
+651,command_injection,https://testsite.org/api/users,DELETE,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,6.5,high,False
+652,xss,https://webapp.com/product,DELETE,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,7.9,high,False
+653,file_inclusion,https://example.com/checkout,GET,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,6.7,high,False
+654,idor,https://example.com/settings,PUT,file_id,191,Unauthorized access to resource file_id=191,medium,5.9,medium,False
+655,command_injection,https://webapp.com/product,PUT,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,9.3,critical,False
+656,csrf,https://example.com/admin,PUT,,,No CSRF token found in form submission,medium,3.5,low,False
+657,xss,https://webapp.com/search,GET,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,3.5,low,False
+658,command_injection,https://securitytesting.io/cart,POST,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.4,medium,False
+659,command_injection,https://vulnerableapp.net/product,GET,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,0.7,info,True
+660,sql_injection,https://vulnerableapp.net/api/products,POST,id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.4,medium,False
+661,csrf,https://webapp.com/settings,POST,,,No CSRF token found in form submission,high,7.5,high,False
+662,command_injection,https://example.com/api/products,DELETE,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.8,low,False
+663,idor,https://testsite.org/user,PUT,file_id,814,Unauthorized access to resource file_id=814,high,6.6,high,False
+664,xss,https://webapp.com/checkout,PUT,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,7.5,high,True
+665,file_inclusion,https://vulnerableapp.net/api/users,PUT,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,9.6,critical,False
+666,idor,https://vulnerableapp.net/admin,DELETE,doc_id,340,Unauthorized access to resource doc_id=340,low,3.3,low,True
+667,file_inclusion,https://testsite.org/admin,POST,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.6,medium,False
+668,file_inclusion,https://example.com/api/users,POST,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,7.1,high,False
+669,idor,https://securitytesting.io/profile,DELETE,user_id,33,Unauthorized access to resource user_id=33,medium,6.0,high,False
+670,sql_injection,https://securitytesting.io/settings,PUT,id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,4.4,medium,True
+671,xss,https://testsite.org/api/products,PUT,message,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,5.1,medium,False
+672,file_inclusion,https://securitytesting.io/login,POST,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,8.4,critical,False
+673,command_injection,https://webapp.com/api/products,GET,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.2,medium,False
+674,idor,https://vulnerableapp.net/admin,PUT,doc_id,988,Unauthorized access to resource doc_id=988,medium,6.2,high,False
+675,csrf,https://vulnerableapp.net/user,PUT,,,No CSRF token found in form submission,critical,9.4,critical,False
+676,idor,https://securitytesting.io/cart,PUT,doc_id,633,Unauthorized access to resource doc_id=633,medium,4.6,medium,False
+677,sql_injection,https://vulnerableapp.net/login,GET,user_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",low,2.6,low,False
+678,file_inclusion,https://testsite.org/api/products,POST,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,6.7,high,True
+679,sql_injection,https://webapp.com/user,GET,category_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',high,7.9,high,False
+680,command_injection,https://webapp.com/login,PUT,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,2.2,low,False
+681,file_inclusion,https://vulnerableapp.net/admin,POST,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.0,medium,False
+682,sql_injection,https://securitytesting.io/register,GET,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',low,2.6,low,False
+683,idor,https://webapp.com/checkout,DELETE,doc_id,761,Unauthorized access to resource doc_id=761,low,1.9,info,True
+684,file_inclusion,https://testsite.org/checkout,DELETE,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,6.8,high,False
+685,file_inclusion,https://testsite.org/cart,DELETE,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,1.8,info,True
+686,file_inclusion,https://securitytesting.io/cart,GET,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.2,high,False
+687,command_injection,https://securitytesting.io/checkout,GET,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,7.0,high,True
+688,csrf,https://webapp.com/register,GET,,,No CSRF token found in form submission,medium,6.2,high,False
+689,command_injection,https://example.com/checkout,GET,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,3.3,low,False
+690,xss,https://webapp.com/cart,DELETE,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,1.9,info,True
+691,xss,https://webapp.com/profile,PUT,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,4.3,medium,False
+692,idor,https://securitytesting.io/settings,POST,user_id,706,Unauthorized access to resource user_id=706,info,1.0,info,False
+693,xss,https://example.com/api/products,GET,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,info,0.8,info,False
+694,csrf,https://vulnerableapp.net/admin,DELETE,,,No CSRF token found in form submission,high,7.5,high,False
+695,xss,https://vulnerableapp.net/api/users,POST,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,6.4,high,False
+696,csrf,https://securitytesting.io/user,PUT,,,No CSRF token found in form submission,high,7.3,high,False
+697,xss,https://webapp.com/admin,PUT,q,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,5.8,medium,False
+698,idor,https://webapp.com/api/products,GET,user_id,297,Unauthorized access to resource user_id=297,medium,4.8,medium,False
+699,command_injection,https://webapp.com/admin,PUT,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,2.9,low,False
+700,file_inclusion,https://example.com/profile,POST,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,0.7,info,False
+701,file_inclusion,https://securitytesting.io/login,POST,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,8.3,critical,False
+702,xss,https://testsite.org/login,POST,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,4.1,medium,False
+703,file_inclusion,https://securitytesting.io/user,GET,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.0,medium,False
+704,file_inclusion,https://vulnerableapp.net/register,POST,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.2,medium,False
+705,sql_injection,https://testsite.org/api/users,POST,id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,7.5,high,False
+706,idor,https://example.com/api/users,POST,account_id,52,Unauthorized access to resource account_id=52,high,8.3,critical,False
+707,file_inclusion,https://example.com/product,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,0.5,info,True
+708,file_inclusion,https://vulnerableapp.net/settings,POST,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.0,high,False
+709,file_inclusion,https://example.com/product,GET,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.2,medium,False
+710,idor,https://vulnerableapp.net/cart,POST,user_id,601,Unauthorized access to resource user_id=601,low,3.8,low,False
+711,csrf,https://vulnerableapp.net/checkout,GET,,,No CSRF token found in form submission,medium,4.7,medium,True
+712,xss,https://webapp.com/checkout,DELETE,message,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,6.2,high,False
+713,idor,https://testsite.org/profile,POST,user_id,644,Unauthorized access to resource user_id=644,medium,4.7,medium,False
+714,file_inclusion,https://example.com/register,GET,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,6.4,high,True
+715,sql_injection,https://securitytesting.io/search,PUT,product_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.0,medium,False
+716,xss,https://webapp.com/user,PUT,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,low,3.6,low,False
+717,sql_injection,https://example.com/admin,GET,id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',medium,3.7,low,True
+718,file_inclusion,https://webapp.com/checkout,GET,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,1.2,info,False
+719,idor,https://example.com/product,POST,account_id,633,Unauthorized access to resource account_id=633,low,2.4,low,False
+720,command_injection,https://testsite.org/admin,DELETE,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.5,medium,False
+721,command_injection,https://webapp.com/login,POST,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.2,medium,False
+722,csrf,https://securitytesting.io/profile,GET,,,No CSRF token found in form submission,high,6.6,high,False
+723,sql_injection,https://testsite.org/search,GET,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',medium,5.9,medium,False
+724,sql_injection,https://securitytesting.io/register,POST,product_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',info,0.1,info,False
+725,command_injection,https://example.com/register,PUT,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,0.1,info,False
+726,file_inclusion,https://webapp.com/api/users,GET,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,3.4,low,False
+727,xss,https://webapp.com/checkout,GET,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,5.6,medium,False
+728,xss,https://webapp.com/login,PUT,message,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,4.5,medium,False
+729,sql_injection,https://example.com/user,PUT,category_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,5.4,medium,False
+730,command_injection,https://webapp.com/product,GET,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.8,high,False
+731,command_injection,https://webapp.com/admin,DELETE,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.7,high,False
+732,sql_injection,https://vulnerableapp.net/api/users,DELETE,category_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',high,6.5,high,False
+733,xss,https://securitytesting.io/profile,POST,search,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,5.8,medium,True
+734,command_injection,https://securitytesting.io/search,GET,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,9.0,critical,False
+735,sql_injection,https://webapp.com/search,DELETE,id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,4.4,medium,False
+736,xss,https://example.com/checkout,POST,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,4.9,medium,True
+737,sql_injection,https://vulnerableapp.net/settings,POST,product_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.8,medium,True
+738,idor,https://vulnerableapp.net/cart,DELETE,user_id,650,Unauthorized access to resource user_id=650,medium,4.3,medium,False
+739,file_inclusion,https://securitytesting.io/checkout,POST,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.3,medium,False
+740,idor,https://webapp.com/register,DELETE,account_id,869,Unauthorized access to resource account_id=869,medium,6.0,high,False
+741,file_inclusion,https://securitytesting.io/product,PUT,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,0.7,info,False
+742,xss,https://example.com/search,POST,message,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,6.1,high,True
+743,csrf,https://testsite.org/register,DELETE,,,No CSRF token found in form submission,high,7.5,high,False
+744,csrf,https://vulnerableapp.net/product,DELETE,,,No CSRF token found in form submission,high,7.6,high,True
+745,idor,https://vulnerableapp.net/checkout,PUT,account_id,820,Unauthorized access to resource account_id=820,info,0.1,info,False
+746,sql_injection,https://securitytesting.io/cart,GET,id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,4.0,medium,False
+747,csrf,https://example.com/product,PUT,,,No CSRF token found in form submission,medium,5.3,medium,True
+748,idor,https://vulnerableapp.net/product,POST,file_id,112,Unauthorized access to resource file_id=112,high,6.0,high,False
+749,csrf,https://testsite.org/checkout,DELETE,,,No CSRF token found in form submission,high,5.7,medium,False
+750,command_injection,https://testsite.org/login,PUT,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,2.5,low,True
+751,file_inclusion,https://webapp.com/register,DELETE,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,6.2,high,False
+752,idor,https://securitytesting.io/profile,DELETE,doc_id,758,Unauthorized access to resource doc_id=758,medium,3.7,low,True
+753,idor,https://vulnerableapp.net/checkout,PUT,user_id,722,Unauthorized access to resource user_id=722,low,4.1,medium,True
+754,sql_injection,https://securitytesting.io/product,POST,user_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",high,6.9,high,True
+755,sql_injection,https://securitytesting.io/api/users,GET,category_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,5.3,medium,False
+756,command_injection,https://securitytesting.io/admin,GET,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.6,high,True
+757,idor,https://vulnerableapp.net/search,PUT,user_id,318,Unauthorized access to resource user_id=318,high,8.1,critical,False
+758,file_inclusion,https://securitytesting.io/register,DELETE,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,3.8,low,True
+759,xss,https://example.com/api/products,POST,comment,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,5.4,medium,True
+760,csrf,https://testsite.org/profile,POST,,,No CSRF token found in form submission,low,2.5,low,False
+761,command_injection,https://vulnerableapp.net/settings,POST,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.2,medium,False
+762,csrf,https://testsite.org/search,GET,,,No CSRF token found in form submission,low,2.2,low,True
+763,idor,https://testsite.org/cart,POST,file_id,596,Unauthorized access to resource file_id=596,medium,5.3,medium,False
+764,xss,https://securitytesting.io/login,PUT,message,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,8.9,critical,False
+765,idor,https://securitytesting.io/checkout,POST,doc_id,591,Unauthorized access to resource doc_id=591,medium,4.4,medium,False
+766,sql_injection,https://securitytesting.io/checkout,GET,id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,6.9,high,False
+767,sql_injection,https://testsite.org/search,POST,category_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,8.0,critical,True
+768,csrf,https://example.com/settings,DELETE,,,No CSRF token found in form submission,medium,5.1,medium,False
+769,file_inclusion,https://webapp.com/settings,DELETE,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,critical,8.6,critical,False
+770,file_inclusion,https://webapp.com/api/users,DELETE,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.0,medium,True
+771,csrf,https://testsite.org/api/users,DELETE,,,No CSRF token found in form submission,medium,5.4,medium,False
+772,file_inclusion,https://testsite.org/api/products,PUT,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.9,medium,False
+773,xss,https://example.com/profile,GET,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,3.4,low,False
+774,xss,https://testsite.org/api/users,DELETE,message,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,3.3,low,False
+775,csrf,https://example.com/cart,PUT,,,No CSRF token found in form submission,medium,4.9,medium,False
+776,xss,https://webapp.com/search,DELETE,search,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,critical,8.8,critical,False
+777,sql_injection,https://example.com/profile,GET,id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,4.7,medium,False
+778,command_injection,https://securitytesting.io/admin,DELETE,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,5.7,medium,False
+779,idor,https://vulnerableapp.net/profile,POST,user_id,535,Unauthorized access to resource user_id=535,high,6.9,high,False
+780,sql_injection,https://securitytesting.io/admin,GET,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,6.4,high,False
+781,csrf,https://vulnerableapp.net/api/users,GET,,,No CSRF token found in form submission,medium,4.7,medium,True
+782,xss,https://example.com/register,PUT,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,low,4.7,medium,False
+783,command_injection,https://vulnerableapp.net/api/users,GET,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,6.3,high,True
+784,idor,https://webapp.com/product,GET,file_id,15,Unauthorized access to resource file_id=15,low,3.7,low,False
+785,idor,https://webapp.com/settings,GET,doc_id,516,Unauthorized access to resource doc_id=516,medium,5.1,medium,False
+786,xss,https://securitytesting.io/login,DELETE,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,6.7,high,False
+787,sql_injection,https://example.com/search,DELETE,id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,5.8,medium,False
+788,csrf,https://securitytesting.io/product,POST,,,No CSRF token found in form submission,medium,4.1,medium,True
+789,csrf,https://testsite.org/user,PUT,,,No CSRF token found in form submission,info,1.4,info,False
+790,idor,https://securitytesting.io/search,POST,doc_id,729,Unauthorized access to resource doc_id=729,high,6.7,high,False
+791,command_injection,https://securitytesting.io/cart,POST,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.5,medium,False
+792,command_injection,https://example.com/api/products,DELETE,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.0,medium,True
+793,command_injection,https://example.com/settings,POST,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,6.6,high,False
+794,csrf,https://testsite.org/user,GET,,,No CSRF token found in form submission,high,8.1,critical,False
+795,idor,https://testsite.org/api/users,POST,file_id,60,Unauthorized access to resource file_id=60,high,5.6,medium,False
+796,xss,https://example.com/api/products,DELETE,message,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,4.1,medium,False
+797,xss,https://example.com/search,POST,message,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,7.1,high,False
+798,command_injection,https://example.com/user,DELETE,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.2,medium,False
+799,xss,https://vulnerableapp.net/cart,POST,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,low,1.2,info,True
+800,csrf,https://webapp.com/register,DELETE,,,No CSRF token found in form submission,low,2.1,low,False
+801,sql_injection,https://example.com/cart,DELETE,order_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,4.6,medium,True
+802,sql_injection,https://vulnerableapp.net/login,GET,category_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",critical,9.8,critical,False
+803,command_injection,https://webapp.com/cart,POST,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,1.9,info,True
+804,command_injection,https://example.com/api/users,DELETE,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,1.0,info,False
+805,idor,https://webapp.com/admin,GET,file_id,679,Unauthorized access to resource file_id=679,medium,5.4,medium,True
+806,file_inclusion,https://securitytesting.io/login,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,6.4,high,False
+807,sql_injection,https://vulnerableapp.net/api/products,POST,id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,7.7,high,False
+808,file_inclusion,https://webapp.com/api/users,DELETE,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,7.0,high,False
+809,idor,https://securitytesting.io/register,DELETE,user_id,282,Unauthorized access to resource user_id=282,critical,9.6,critical,False
+810,idor,https://vulnerableapp.net/search,POST,file_id,919,Unauthorized access to resource file_id=919,medium,4.6,medium,False
+811,xss,https://vulnerableapp.net/admin,PUT,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,8.0,critical,False
+812,csrf,https://testsite.org/api/users,DELETE,,,No CSRF token found in form submission,high,7.5,high,True
+813,sql_injection,https://example.com/api/products,GET,category_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',medium,5.2,medium,False
+814,command_injection,https://testsite.org/login,POST,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,6.6,high,False
+815,file_inclusion,https://example.com/profile,POST,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,6.2,high,True
+816,command_injection,https://vulnerableapp.net/product,DELETE,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,3.1,low,False
+817,command_injection,https://vulnerableapp.net/search,POST,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.4,medium,False
+818,sql_injection,https://testsite.org/search,DELETE,order_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,7.5,high,False
+819,file_inclusion,https://securitytesting.io/user,PUT,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.4,medium,False
+820,idor,https://securitytesting.io/login,PUT,user_id,96,Unauthorized access to resource user_id=96,critical,9.3,critical,False
+821,file_inclusion,https://example.com/user,POST,exec,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.1,medium,False
+822,command_injection,https://securitytesting.io/user,DELETE,cmd,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.6,high,True
+823,file_inclusion,https://example.com/user,GET,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.9,medium,True
+824,idor,https://example.com/settings,DELETE,file_id,972,Unauthorized access to resource file_id=972,medium,4.6,medium,False
+825,sql_injection,https://securitytesting.io/profile,DELETE,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,4.7,medium,False
+826,sql_injection,https://securitytesting.io/api/products,PUT,order_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",low,2.9,low,False
+827,csrf,https://example.com/login,PUT,,,No CSRF token found in form submission,high,7.3,high,False
+828,idor,https://vulnerableapp.net/settings,POST,file_id,274,Unauthorized access to resource file_id=274,high,7.5,high,False
+829,command_injection,https://securitytesting.io/admin,DELETE,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.0,medium,False
+830,idor,https://securitytesting.io/api/users,PUT,doc_id,591,Unauthorized access to resource doc_id=591,medium,4.9,medium,False
+831,file_inclusion,https://securitytesting.io/api/users,DELETE,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.3,medium,False
+832,idor,https://vulnerableapp.net/product,POST,file_id,975,Unauthorized access to resource file_id=975,medium,3.6,low,False
+833,csrf,https://example.com/profile,POST,,,No CSRF token found in form submission,critical,10.0,critical,False
+834,command_injection,https://example.com/search,PUT,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,3.4,low,False
+835,xss,https://testsite.org/settings,DELETE,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,6.2,high,False
+836,xss,https://webapp.com/login,GET,message,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,6.0,high,False
+837,csrf,https://webapp.com/search,GET,,,No CSRF token found in form submission,high,8.3,critical,False
+838,command_injection,https://webapp.com/settings,PUT,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,8.8,critical,False
+839,command_injection,https://securitytesting.io/api/users,DELETE,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,6.0,high,False
+840,sql_injection,https://vulnerableapp.net/register,PUT,id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,6.8,high,True
+841,csrf,https://webapp.com/settings,PUT,,,No CSRF token found in form submission,critical,9.4,critical,False
+842,file_inclusion,https://vulnerableapp.net/cart,GET,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.0,medium,False
+843,idor,https://vulnerableapp.net/admin,GET,doc_id,280,Unauthorized access to resource doc_id=280,high,7.8,high,True
+844,xss,https://vulnerableapp.net/checkout,DELETE,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",info,0.9,info,False
+845,idor,https://example.com/profile,PUT,user_id,239,Unauthorized access to resource user_id=239,high,7.2,high,True
+846,xss,https://vulnerableapp.net/checkout,PUT,name,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,high,7.1,high,False
+847,sql_injection,https://securitytesting.io/admin,GET,user_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,8.2,critical,True
+848,file_inclusion,https://testsite.org/search,POST,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,info,0.9,info,False
+849,command_injection,https://example.com/admin,POST,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,low,3.1,low,False
+850,sql_injection,https://vulnerableapp.net/profile,POST,id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,4.8,medium,False
+851,xss,https://testsite.org/api/users,POST,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,6.5,high,False
+852,sql_injection,https://vulnerableapp.net/api/users,POST,order_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',low,2.5,low,True
+853,file_inclusion,https://securitytesting.io/product,PUT,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.1,high,False
+854,file_inclusion,https://webapp.com/api/users,POST,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.7,medium,False
+855,xss,https://testsite.org/search,GET,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,3.6,low,False
+856,idor,https://testsite.org/profile,DELETE,file_id,988,Unauthorized access to resource file_id=988,medium,6.0,high,False
+857,csrf,https://vulnerableapp.net/user,POST,,,No CSRF token found in form submission,low,3.1,low,True
+858,sql_injection,https://webapp.com/profile,DELETE,product_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,7.5,high,True
+859,command_injection,https://example.com/user,POST,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,7.1,high,False
+860,file_inclusion,https://webapp.com/login,GET,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.8,medium,True
+861,csrf,https://webapp.com/register,DELETE,,,No CSRF token found in form submission,medium,5.6,medium,False
+862,sql_injection,https://securitytesting.io/profile,GET,product_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,5.6,medium,False
+863,csrf,https://webapp.com/user,POST,,,No CSRF token found in form submission,high,7.2,high,False
+864,csrf,https://webapp.com/settings,DELETE,,,No CSRF token found in form submission,info,1.6,info,False
+865,idor,https://vulnerableapp.net/profile,PUT,file_id,268,Unauthorized access to resource file_id=268,high,6.4,high,False
+866,command_injection,https://testsite.org/api/users,PUT,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.2,medium,True
+867,csrf,https://securitytesting.io/admin,GET,,,No CSRF token found in form submission,high,7.9,high,False
+868,idor,https://example.com/register,PUT,doc_id,70,Unauthorized access to resource doc_id=70,high,8.8,critical,False
+869,xss,https://testsite.org/user,DELETE,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,low,2.9,low,False
+870,sql_injection,https://vulnerableapp.net/api/products,GET,product_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',low,2.8,low,False
+871,file_inclusion,https://securitytesting.io/api/products,PUT,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,3.6,low,False
+872,idor,https://testsite.org/product,PUT,doc_id,358,Unauthorized access to resource doc_id=358,info,1.0,info,False
+873,xss,https://webapp.com/checkout,DELETE,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,info,2.1,low,False
+874,sql_injection,https://example.com/product,PUT,order_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",high,8.1,critical,False
+875,csrf,https://vulnerableapp.net/user,POST,,,No CSRF token found in form submission,medium,6.0,high,False
+876,csrf,https://testsite.org/profile,POST,,,No CSRF token found in form submission,high,8.0,critical,False
+877,csrf,https://securitytesting.io/api/users,DELETE,,,No CSRF token found in form submission,medium,4.9,medium,False
+878,file_inclusion,https://example.com/search,GET,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,critical,9.1,critical,True
+879,csrf,https://example.com/cart,PUT,,,No CSRF token found in form submission,critical,7.6,high,False
+880,file_inclusion,https://securitytesting.io/register,GET,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,critical,9.1,critical,False
+881,file_inclusion,https://vulnerableapp.net/api/users,DELETE,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.9,medium,True
+882,file_inclusion,https://webapp.com/checkout,DELETE,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,5.6,medium,True
+883,file_inclusion,https://securitytesting.io/login,PUT,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,2.2,low,True
+884,sql_injection,https://webapp.com/profile,DELETE,product_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,7.5,high,False
+885,xss,https://example.com/user,PUT,q,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,7.8,high,True
+886,sql_injection,https://webapp.com/product,PUT,product_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,6.3,high,True
+887,sql_injection,https://webapp.com/api/products,PUT,id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",medium,5.8,medium,False
+888,file_inclusion,https://example.com/api/users,DELETE,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,7.8,high,True
+889,file_inclusion,https://example.com/api/products,GET,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,3.0,low,False
+890,file_inclusion,https://webapp.com/user,DELETE,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.7,medium,False
+891,file_inclusion,https://example.com/settings,GET,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.3,medium,False
+892,xss,https://testsite.org/login,DELETE,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,4.4,medium,False
+893,csrf,https://testsite.org/admin,POST,,,No CSRF token found in form submission,info,0.1,info,False
+894,xss,https://webapp.com/login,GET,name,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",low,3.1,low,False
+895,idor,https://testsite.org/api/users,GET,account_id,161,Unauthorized access to resource account_id=161,critical,9.3,critical,False
+896,sql_injection,https://vulnerableapp.net/profile,GET,order_id,"' UNION SELECT 1,2,3 --","SQL error in response: You have an error in your SQL syntax near '' UNION SELECT 1,2,3 --'",critical,10.0,critical,False
+897,xss,https://testsite.org/checkout,PUT,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,low,3.1,low,False
+898,idor,https://webapp.com/register,POST,account_id,567,Unauthorized access to resource account_id=567,low,3.0,low,False
+899,xss,https://testsite.org/cart,GET,search,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",critical,10.0,critical,False
+900,idor,https://testsite.org/admin,PUT,doc_id,159,Unauthorized access to resource doc_id=159,high,6.3,high,False
+901,csrf,https://example.com/user,DELETE,,,No CSRF token found in form submission,medium,4.8,medium,False
+902,file_inclusion,https://testsite.org/login,PUT,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,6.3,high,False
+903,command_injection,https://example.com/search,GET,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,5.8,medium,False
+904,xss,https://webapp.com/user,DELETE,q,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,medium,4.8,medium,False
+905,command_injection,https://webapp.com/login,GET,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,5.2,medium,True
+906,idor,https://securitytesting.io/api/products,DELETE,user_id,79,Unauthorized access to resource user_id=79,high,8.0,critical,False
+907,csrf,https://webapp.com/checkout,PUT,,,No CSRF token found in form submission,high,6.2,high,False
+908,file_inclusion,https://securitytesting.io/settings,POST,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,6.0,high,False
+909,file_inclusion,https://webapp.com/api/users,DELETE,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.5,high,False
+910,xss,https://vulnerableapp.net/settings,DELETE,q,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",high,6.3,high,False
+911,csrf,https://securitytesting.io/product,GET,,,No CSRF token found in form submission,medium,3.7,low,False
+912,command_injection,https://testsite.org/checkout,PUT,cmd,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.3,medium,False
+913,file_inclusion,https://example.com/login,POST,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,7.6,high,False
+914,csrf,https://vulnerableapp.net/cart,GET,,,No CSRF token found in form submission,critical,9.6,critical,False
+915,csrf,https://securitytesting.io/settings,PUT,,,No CSRF token found in form submission,info,1.0,info,True
+916,xss,https://example.com/register,PUT,message,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,4.3,medium,False
+917,file_inclusion,https://vulnerableapp.net/search,POST,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.7,medium,False
+918,idor,https://example.com/settings,DELETE,user_id,497,Unauthorized access to resource user_id=497,low,1.6,info,False
+919,file_inclusion,https://example.com/login,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,info,1.6,info,False
+920,file_inclusion,https://securitytesting.io/profile,POST,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,critical,9.3,critical,False
+921,csrf,https://example.com/search,POST,,,No CSRF token found in form submission,low,3.6,low,False
+922,xss,https://testsite.org/api/users,GET,comment,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,critical,9.1,critical,False
+923,sql_injection,https://webapp.com/login,PUT,id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',low,2.9,low,False
+924,command_injection,https://webapp.com/api/users,PUT,file,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,6.8,high,False
+925,csrf,https://webapp.com/register,PUT,,,No CSRF token found in form submission,high,5.9,medium,False
+926,csrf,https://securitytesting.io/profile,GET,,,No CSRF token found in form submission,medium,4.2,medium,False
+927,command_injection,https://vulnerableapp.net/product,PUT,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.8,high,False
+928,xss,https://example.com/cart,GET,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,5.3,medium,False
+929,idor,https://example.com/login,POST,user_id,212,Unauthorized access to resource user_id=212,info,1.9,info,False
+930,xss,https://securitytesting.io/settings,PUT,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,3.6,low,False
+931,csrf,https://webapp.com/admin,DELETE,,,No CSRF token found in form submission,medium,5.5,medium,False
+932,csrf,https://webapp.com/settings,DELETE,,,No CSRF token found in form submission,medium,3.7,low,False
+933,idor,https://testsite.org/register,POST,account_id,522,Unauthorized access to resource account_id=522,high,8.7,critical,False
+934,command_injection,https://vulnerableapp.net/admin,GET,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,low,3.5,low,False
+935,idor,https://testsite.org/search,PUT,file_id,183,Unauthorized access to resource file_id=183,medium,4.2,medium,False
+936,csrf,https://securitytesting.io/login,POST,,,No CSRF token found in form submission,high,6.1,high,True
+937,idor,https://testsite.org/checkout,POST,user_id,615,Unauthorized access to resource user_id=615,medium,5.1,medium,False
+938,idor,https://webapp.com/api/users,PUT,user_id,207,Unauthorized access to resource user_id=207,medium,3.5,low,False
+939,file_inclusion,https://webapp.com/api/users,DELETE,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,4.0,medium,False
+940,csrf,https://vulnerableapp.net/search,POST,,,No CSRF token found in form submission,medium,4.6,medium,False
+941,sql_injection,https://webapp.com/cart,POST,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',high,7.4,high,False
+942,sql_injection,https://vulnerableapp.net/search,PUT,category_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',low,3.4,low,False
+943,xss,https://vulnerableapp.net/profile,DELETE,comment,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",medium,4.8,medium,False
+944,csrf,https://vulnerableapp.net/product,DELETE,,,No CSRF token found in form submission,critical,8.1,critical,False
+945,csrf,https://securitytesting.io/login,GET,,,No CSRF token found in form submission,high,7.2,high,True
+946,xss,https://vulnerableapp.net/product,PUT,message,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",low,4.0,medium,False
+947,command_injection,https://vulnerableapp.net/api/products,POST,path,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,8.9,critical,False
+948,file_inclusion,https://securitytesting.io/cart,PUT,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,high,7.7,high,False
+949,sql_injection,https://securitytesting.io/profile,PUT,product_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.2,medium,False
+950,file_inclusion,https://securitytesting.io/product,POST,cmd,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,high,6.7,high,False
+951,csrf,https://vulnerableapp.net/settings,POST,,,No CSRF token found in form submission,info,0.1,info,False
+952,csrf,https://vulnerableapp.net/checkout,POST,,,No CSRF token found in form submission,info,0.1,info,False
+953,idor,https://example.com/login,POST,account_id,306,Unauthorized access to resource account_id=306,medium,5.1,medium,False
+954,file_inclusion,https://testsite.org/cart,GET,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,4.8,medium,False
+955,sql_injection,https://example.com/profile,GET,user_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',medium,4.6,medium,False
+956,xss,https://vulnerableapp.net/user,PUT,name,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,7.0,high,False
+957,file_inclusion,https://testsite.org/api/products,PUT,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,4.7,medium,False
+958,csrf,https://webapp.com/product,POST,,,No CSRF token found in form submission,medium,6.4,high,True
+959,file_inclusion,https://testsite.org/api/products,DELETE,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,5.3,medium,True
+960,sql_injection,https://testsite.org/search,GET,order_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',medium,5.4,medium,True
+961,file_inclusion,https://securitytesting.io/search,POST,url,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,critical,9.0,critical,False
+962,sql_injection,https://securitytesting.io/product,PUT,order_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',medium,5.2,medium,True
+963,csrf,https://testsite.org/api/users,DELETE,,,No CSRF token found in form submission,medium,4.5,medium,True
+964,xss,https://testsite.org/api/users,GET,search,<img src=x onerror=alert(1)>,Payload <img src=x onerror=alert(1)> reflected in response,high,7.1,high,False
+965,idor,https://example.com/login,GET,doc_id,228,Unauthorized access to resource doc_id=228,high,6.8,high,False
+966,file_inclusion,https://securitytesting.io/settings,DELETE,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,3.6,low,False
+967,command_injection,https://webapp.com/admin,GET,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,info,0.8,info,False
+968,file_inclusion,https://testsite.org/api/users,DELETE,exec,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,medium,4.9,medium,False
+969,csrf,https://securitytesting.io/user,POST,,,No CSRF token found in form submission,high,7.9,high,True
+970,idor,https://securitytesting.io/product,POST,account_id,185,Unauthorized access to resource account_id=185,low,2.0,low,True
+971,file_inclusion,https://vulnerableapp.net/user,GET,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,2.9,low,False
+972,file_inclusion,https://vulnerableapp.net/api/users,POST,url,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,medium,6.7,high,False
+973,idor,https://testsite.org/login,GET,file_id,766,Unauthorized access to resource file_id=766,medium,4.0,medium,False
+974,sql_injection,https://example.com/login,GET,product_id,admin'--,SQL error in response: You have an error in your SQL syntax near 'admin'--',low,3.1,low,False
+975,idor,https://vulnerableapp.net/product,PUT,doc_id,367,Unauthorized access to resource doc_id=367,medium,5.8,medium,False
+976,file_inclusion,https://securitytesting.io/product,POST,path,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,7.2,high,False
+977,idor,https://testsite.org/checkout,PUT,doc_id,462,Unauthorized access to resource doc_id=462,info,0.1,info,False
+978,file_inclusion,https://securitytesting.io/user,POST,file,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,0.1,info,False
+979,idor,https://webapp.com/search,PUT,doc_id,276,Unauthorized access to resource doc_id=276,medium,6.4,high,False
+980,file_inclusion,https://testsite.org/checkout,PUT,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,info,2.7,low,False
+981,command_injection,https://testsite.org/checkout,DELETE,url,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,info,1.4,info,True
+982,sql_injection,https://vulnerableapp.net/user,PUT,user_id,1' OR '1'='1,SQL error in response: You have an error in your SQL syntax near '1' OR '1'='1',high,8.3,critical,False
+983,idor,https://testsite.org/cart,GET,file_id,501,Unauthorized access to resource file_id=501,high,5.3,medium,False
+984,csrf,https://webapp.com/profile,PUT,,,No CSRF token found in form submission,medium,4.5,medium,True
+985,command_injection,https://example.com/api/users,GET,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,info,1.6,info,False
+986,idor,https://testsite.org/settings,PUT,doc_id,332,Unauthorized access to resource doc_id=332,low,4.8,medium,True
+987,file_inclusion,https://example.com/cart,POST,file,../../../etc/passwd,Successful exploitation with payload: ../../../etc/passwd,high,6.2,high,False
+988,csrf,https://webapp.com/product,POST,,,No CSRF token found in form submission,medium,5.4,medium,True
+989,csrf,https://vulnerableapp.net/profile,POST,,,No CSRF token found in form submission,medium,3.4,low,False
+990,idor,https://securitytesting.io/login,POST,account_id,438,Unauthorized access to resource account_id=438,low,3.9,low,False
+991,idor,https://vulnerableapp.net/admin,DELETE,doc_id,841,Unauthorized access to resource doc_id=841,medium,6.2,high,True
+992,command_injection,https://vulnerableapp.net/api/products,GET,exec,?cmd=whoami,Successful exploitation with payload: ?cmd=whoami,medium,5.5,medium,False
+993,idor,https://vulnerableapp.net/cart,GET,account_id,855,Unauthorized access to resource account_id=855,high,7.1,high,True
+994,idor,https://securitytesting.io/api/users,DELETE,account_id,786,Unauthorized access to resource account_id=786,low,2.0,low,False
+995,file_inclusion,https://example.com/product,DELETE,path,| cat /etc/passwd,Successful exploitation with payload: | cat /etc/passwd,low,3.5,low,False
+996,sql_injection,https://securitytesting.io/profile,PUT,category_id,' OR 1=1 --,SQL error in response: You have an error in your SQL syntax near '' OR 1=1 --',high,7.0,high,False
+997,xss,https://testsite.org/settings,DELETE,q,"""><script>alert(1)</script>","Payload ""><script>alert(1)</script> reflected in response",info,1.1,info,False
+998,idor,https://example.com/register,POST,user_id,388,Unauthorized access to resource user_id=388,high,6.1,high,False
+999,idor,https://testsite.org/api/products,GET,doc_id,670,Unauthorized access to resource doc_id=670,low,2.7,low,True
+1000,xss,https://securitytesting.io/product,POST,q,<script>alert(1)</script>,Payload <script>alert(1)</script> reflected in response,medium,4.8,medium,False
